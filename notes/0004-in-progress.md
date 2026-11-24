@@ -21,7 +21,7 @@ The reason primality is cheap is not that primes are simple. It is that there is
 
 ## Why semiprime identification is factoring
 
-The H12.2 direction of the Perihelion project posits that (p, q) is the unique integer point on the hyperbola xy = N with both coordinates prime. This is a genuine structural uniqueness: among the four integer points on xy = N — (1,N), (p,q), (q,p), (N,1) — exactly one has both coordinates prime. The uniqueness is real. It does not help.
+The H12.2 direction posits that (p, q) is the unique integer point on the hyperbola xy = N with both coordinates prime. This is a genuine structural uniqueness: among the four integer points on xy = N — (1,N), (p,q), (q,p), (N,1) — exactly one has both coordinates prime. The uniqueness is real. It does not help.
 
 The proof: given an oracle that computes d(N) for any N, you factor any semiprime N = pq. Compute d(N). If it is 4, N is a semiprime (or a prime cube, a degenerate case). Then test primes m: d(N·m) is 8 unless m divides N, in which case it is 6. A polynomial number of tests finds a factor. So any method that computes d(N) is a factoring algorithm.
 
@@ -31,7 +31,7 @@ The uniqueness of (p, q) on the hyperbola is an existence property. Knowing the 
 
 Every classical factoring approach requires enumeration, checking candidate divisors one by one. Trial division checks primes up to √N. Pollard's rho runs a random walk of length O(√p). CFRAC, GNFS, ECM, and lattice methods all enumerate candidate sets, just at different scales. None are polynomial.
 
-The deeper result, from the Perihelion KEY-FINDINGS: every mathematical framework that encodes factor information does so symmetrically. Encoding and decoding have the same complexity. The divisor function d(N) encodes the complete prime factorization of N; computing it is decoding, and decoding is factoring. There is no framework that leaks factor information one way without also requiring it back.
+The deeper result, from the project's key findings: every mathematical framework that encodes factor information does so symmetrically. Encoding and decoding have the same complexity. The divisor function d(N) encodes the complete prime factorization of N; computing it is decoding, and decoding is factoring. There is no framework that leaks factor information one way without also requiring it back.
 
 The six sub-approaches of H12.2 — integer point structure, lattice point counting, Minkowski's theorem, continued fractions, primality-detecting lattices, Diophantine approximation — all hit the same wall. Either they are equivalent to factoring (computing d(N), counting points, testing primality of coordinates), or they require enumeration (CF periods are exponential, Baker bounds are too large, the hyperbolic region is nonconvex so Minkowski includes junk points). The uniqueness of (p, q) is information that requires factoring to access, not information that enables factoring.
 
@@ -39,6 +39,6 @@ The six sub-approaches of H12.2 — integer point structure, lattice point count
 
 The open question is whether the asymmetry is real or an artifact of the frameworks we have tried. Every framework tested treats the prime as the degenerate d=2 case and the semiprime as the d=4 case, and the d=4 case reduces to factoring. The question is whether there is a framework where identifying a semiprime is cheaper than factoring, where "is N a semiprime?" is not the same question as "what are the factors of N?"
 
-The current directions, from the Perihelion directions file, are non-uniform algorithms (a different method per N, rather than one algorithm uniform over all semiprimes), structure in specific semiprimes (average-case factoring might be easier than worst-case, though no known structure enables poly-time factoring for even 1% of semiprimes), and the residue-tower cascade (the 2-adic filtration of identification gates, whether the free content of a semiprime accessible in poly time without factoring extends above the quadratic layer).
+The current directions, from the project's directions file, are non-uniform algorithms (a different method per N, rather than one algorithm uniform over all semiprimes), structure in specific semiprimes (average-case factoring might be easier than worst-case, though no known structure enables poly-time factoring for even 1% of semiprimes), and the residue-tower cascade (the 2-adic filtration of identification gates, whether the free content of a semiprime accessible in poly time without factoring extends above the quadratic layer).
 
 The note is in progress. The open question is whether the asymmetry is real or an artifact of the frameworks tried.
