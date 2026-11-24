@@ -1,6 +1,6 @@
 # Giving agents deadlines
 # date: 2026-11-23
-# url: https://adityavram.github.io/notes/0002-deadlines-not-a-quality-lever.md
+# url: https://adityavram.github.io/notes/0002-giving-agents-deadlines.md
 
 
 I frequently found that I needed my agents to go faster. I experimented with a number of solutions, including telling the agent in context that it had a certain amount of time and imposing a hard computational cap that the agent was unaware of.

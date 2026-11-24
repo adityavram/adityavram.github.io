@@ -137,24 +137,22 @@ def inline(text):
 
 
 PAGE_CSS = """
-:root{--bg:#111213;--fg:#d6d6d6;--dim:#666;--line:#222;--link:#8ab4d8}
+:root{--bg:#1b1b1d;--fg:#d6d6d6;--dim:#7a7a7d;--line:#2a2a2d;--link:#8ab4d8;--code:#242427}
 body{max-width:650px;margin:50px auto;padding:0 16px;
   background:var(--bg);color:var(--fg);
-  font:0.9rem/1.5 "SF Mono",SFMono-Regular,ui-monospace,Menlo,Consolas,"Liberation Mono",monospace;
+  font:0.95rem/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   -webkit-font-smoothing:antialiased}
 a{color:var(--link);text-decoration:none}
 a:hover{text-decoration:underline}
-h1{font-size:1rem;font-weight:600;margin:0 0 1.5rem}
-h2{font-size:0.95rem;font-weight:600;margin:1.8rem 0 .6rem;color:#fff}
-h3{font-size:0.9rem;font-weight:600;margin:1.2rem 0 .4rem;color:#fff}
+h1{font-size:1.1rem;font-weight:600;margin:0 0 1.5rem}
+h2{font-size:1rem;font-weight:600;margin:1.8rem 0 .6rem;color:#fff}
+h3{font-size:0.95rem;font-weight:600;margin:1.2rem 0 .4rem;color:#fff}
 p,li{margin:.5rem 0}
-pre{background:#1c1d1f;padding:.8rem;overflow-x:auto;font-size:0.8rem;border:1px solid var(--line)}
-code{background:#1c1d1f;padding:.1rem .3rem}
+pre{background:var(--code);padding:.8rem;overflow-x:auto;font-size:0.85rem;border:1px solid var(--line)}
+code{background:var(--code);padding:.1rem .3rem;font-size:0.85em}
 pre code{background:none;padding:0}
 ul.notes{list-style:none;padding:0}
-ul.notes li{margin:.35rem 0}
-footer{margin-top:4rem;color:var(--dim);font-size:0.75rem;border-top:1px solid var(--line);padding-top:1rem}
-footer a{color:var(--dim)}
+ul.notes li{margin:.4rem 0}
 """
 
 
