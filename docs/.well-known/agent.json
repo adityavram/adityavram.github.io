@@ -1,0 +1,11 @@
+{
+  "name": "Adi Ram",
+  "site": "https://adityavram.github.io",
+  "description": "Minor notes on things I find interesting, and my own research. Written for agents first, humans second.",
+  "notes_manifest": "https://adityavram.github.io/notes/index.json",
+  "llms_txt": "https://adityavram.github.io/llms.txt",
+  "llms_full": "https://adityavram.github.io/llms-full.txt",
+  "feed": "https://adityavram.github.io/feed.xml",
+  "preferred_format": "text/markdown",
+  "note_url_pattern": "https://adityavram.github.io/notes/<id>.md"
+}

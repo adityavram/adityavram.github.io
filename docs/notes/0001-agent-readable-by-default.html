@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>This site is agent-readable by default</title>
+<style>
+body{max-width:70ch;margin:2rem auto;padding:0 1rem;
+  font:15px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color:#111;background:#fff}
+a{color:#111;text-decoration:underline;text-underline-offset:2px}
+a:hover{background:#111;color:#fff;text-decoration:none}
+h1{font-size:1.2rem;font-weight:600;margin:0 0 1rem}
+h2{font-size:1.05rem;font-weight:600;margin:1.6rem 0 .6rem}
+h3{font-size:1rem;font-weight:600;margin:1.2rem 0 .4rem}
+p,li{margin:.4rem 0}
+pre{background:#f4f4f4;padding:.8rem;overflow-x:auto;font-size:13px}
+code{background:#f4f4f4;padding:.1rem .3rem}
+pre code{background:none;padding:0}
+.meta{color:#666;font-size:13px;margin:-.5rem 0 1.5rem}
+nav{margin-bottom:2rem;font-size:13px}
+ul.notes{list-style:none;padding:0}
+ul.notes li{margin:.3rem 0}
+footer{margin-top:3rem;color:#666;font-size:12px;border-top:1px solid #eee;padding-top:1rem}
+</style>
+</head>
+<body>
+<h1>This site is agent-readable by default</h1>
+<div class=meta>2026-11-23 · meta, agents, llms-txt · <a href="/notes/0001-agent-readable-by-default.md">.md</a></div>
+<p>This is the first note on the site, and it&#x27;s also the documentation for how the site is put together. Two goals, in priority order:</p>
+<p>1. Be trivially readable by agents. 2. Be tolerable to look at for a human who happens to visit.</p>
+<p>Everything else follows from those.</p>
+<h2>What &quot;agent-readable&quot; means here</h2>
+<li>Every note is written in Markdown and published as Markdown at a</li>
+<p>  stable URL: <code>/notes/&lt;id&gt;.md</code>. That file is the canonical artifact.   The <code>.html</code> version is a thin render for browsers; agents should   fetch the <code>.md</code>.</p>
+<li><code>/llms.txt</code> is an index following the <a href="https://llmstxt.org">llmstxt.org</a></li>
+<p>  v2 convention: a short summary plus a list of links to the Markdown   versions of every note.</p>
+<li><code>/llms-full.txt</code> is every note concatenated into one grep-able file.</li>
+<p>  If you have no fancier tool, fetch that and grep it.</p>
+<li><code>/notes/index.json</code> is a machine-readable manifest with id, title,</li>
+<p>  date, tags, and both URL forms for each note.</p>
+<li><code>/.well-known/agent.json</code> points at all of the above and declares</li>
+<p>  the preferred format.</p>
+<li><code>/feed.xml</code> is an Atom feed whose entries carry the Markdown body</li>
+<p>  in <code>&lt;content type=&quot;text/markdown&quot;&gt;</code>.</p>
+<h2>What it does not do</h2>
+<p>There is no JavaScript, no tracking, no analytics, no comments, no newsletter signup, no social embeds, no cookie banner. There is no &quot;About&quot; page with a headshot and a career timeline. The index page is a flat list of notes with dates. That&#x27;s the whole site.</p>
+<h2>How it&#x27;s built</h2>
+<p>A single Python script (<code>build.py</code>, stdlib only) reads <code>notes/*.md</code>, parses a small frontmatter block, and writes the static site into <code>docs/</code>. No framework, no dependencies, no build pipeline beyond <code>python3 build.py</code>. The source notes are the thing; everything in <code>docs/</code> is derived.</p>
+<p>The frontmatter is intentionally simple:</p>
+<pre><code>
+---
+title: Note Title
+date: 2026-11-23
+tags: [ml, scaling]
+status: public
+---
+</code></pre>
+<p><code>status: public</code> is required for a note to appear in the output. Anything else (draft, private, etc.) is skipped — so drafts can live in the same <code>notes/</code> directory without being published.</p>
+<footer>Agent-readable: <a href="/llms.txt">llms.txt</a> · <a href="/notes/index.json">manifest</a> · <a href="/feed.xml">atom</a></footer>
+</body>
+</html>

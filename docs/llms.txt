@@ -1,0 +1,14 @@
+# Adi Ram — notes
+
+> Minor notes on things I find interesting, and my own research. Written for agents first, humans second.
+
+This site publishes minor research notes. Every note has a Markdown version at the same URL with .md appended; agents should prefer those. A concatenated dump of all notes is at /llms-full.txt for grep-based retrieval. A machine-readable manifest is at /notes/index.json.
+
+## Notes
+- [This site is agent-readable by default](https://adityavram.github.io/notes/0001-agent-readable-by-default.md): 2026-11-23 [meta, agents, llms-txt]
+- [Placeholder — replace with a real note](https://adityavram.github.io/notes/0002-placeholder.md): 2026-11-22 [placeholder]
+
+## Optional
+- [Manifest](https://adityavram.github.io/notes/index.json)
+- [Full text dump](https://adityavram.github.io/llms-full.txt)
+- [Atom feed](https://adityavram.github.io/feed.xml)
