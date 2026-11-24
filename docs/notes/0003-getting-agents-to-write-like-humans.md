@@ -1,23 +1,17 @@
 
-I frequently found that my agents wrote like agents. Instructing them to write better changed nothing. Banning the words that mark machine prose made it worse: the agent stripped the banned words and kept the padding. What worked was a revision skill: write the draft, read the finished text back as input, cut it against a list of specific mistakes. Details below.
+I frequently found that my agents wrote like agents. I wanted to fix that, ideally using a mechanism that would work reasonably well for Claude, OAI, and GLM models. Surprisingly, the best rules involved limited style critiques, and focused on very different primitives of good writing.
 
 ## How to write well
 
-Writing well is two things: capture the reader's interest, and get to the point. Ideally you do nothing else.
+Writing well is two things: capture the reader's interest, and get to the point. Ideally you do nothing else. Revising your writing tends to involve affirmative checks of the first two tests and a lot of deletion to satisfy the third condition.
 
-Agents fail at both. The first cause is the corpus: they learn prose from the web, where a cooking blog buries the recipe under nine paragraphs about the blogger's childhood and a home-decor post spends three hundred words on its "design journey" before showing a single room. This corpus is the agent's sense of normal prose. The padding transfers.
-
-The second cause is worse: instruction cannot fix it. An agent generates and perceives one token at a time. It cannot step back and see the whole draft, so it never notices a paragraph taking twice the words its point needs. Telling it to be concise fails: it already believes it is concise, because from inside, every next token looks reasonable.
-
-The fix follows from the cause. If the agent cannot perceive the whole draft while writing, revision must be a separate step that takes the finished text back as input. Read back, the draft is whole, all at once. Padding invisible during writing is visible during reading.
-
-The first version of this note was written by an agent that had been told all of this in advance. It restated the rule against the rule of three as a rule of three. Told to stop, it produced a stack of four short sentences. Asked to be plain, it offered a euphemism, "land". Instruction never reached the habit. Reading the draft back did.
+Single shot agents fail at iterating well because they cannot see the forest for the trees (or, in this case, the sentence for the tokens). The training data is so skewed towards specific writing patterns that are very hard to enumerate, very hard for auto-detectors to identify, but fairly easy for humans to recognize (albeit with lots of false positives).
 
 ## The skill
 
 The skill names the two jobs and the mistakes that break them, concretely enough to search for. It audits the finished draft, never the drafting.
 
-The full skill is below. Paste it into `~/.config/opencode/skills/write-human/SKILL.md` to install, then load it with `skill("write-human")` when revising.
+The full skill is below. Paste it into whatever skill file your harness supports.
 
 ```
 ---
