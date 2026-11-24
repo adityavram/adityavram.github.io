@@ -1,7 +1,7 @@
 [
   {
-    "id": "0001-how-to-make-my-agents-factor-faster",
-    "title": "How to make my agents factor faster",
+    "id": "0001-in-progress",
+    "title": "In Progress - There's no such thing as primes",
     "date": "2026-11-24",
     "tags": [
       "math",
@@ -9,8 +9,8 @@
       "factoring",
       "in-progress"
     ],
-    "url_html": "https://adityavram.github.io/notes/0001-how-to-make-my-agents-factor-faster.html",
-    "url_md": "https://adityavram.github.io/notes/0001-how-to-make-my-agents-factor-faster.md"
+    "url_html": "https://adityavram.github.io/notes/0001-in-progress.html",
+    "url_md": "https://adityavram.github.io/notes/0001-in-progress.md"
   },
   {
     "id": "0002-how-to-make-my-agents-faster",
@@ -50,15 +50,15 @@
     "url_md": "https://adityavram.github.io/notes/0004-how-to-make-agents-cheaper.md"
   },
   {
-    "id": "0005-how-to-make-my-agents-write-less-software",
-    "title": "How to make my agents write less software",
+    "id": "0005-software-is-bad-actually",
+    "title": "Software is bad, actually",
     "date": "2026-11-23",
     "tags": [
       "software",
       "engineering",
       "simplicity"
     ],
-    "url_html": "https://adityavram.github.io/notes/0005-how-to-make-my-agents-write-less-software.html",
-    "url_md": "https://adityavram.github.io/notes/0005-how-to-make-my-agents-write-less-software.md"
+    "url_html": "https://adityavram.github.io/notes/0005-software-is-bad-actually.html",
+    "url_md": "https://adityavram.github.io/notes/0005-software-is-bad-actually.md"
   }
 ]
