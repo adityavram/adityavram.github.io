@@ -1,7 +1,7 @@
 {
   "name": "Adi Ram",
   "site": "https://adityavram.github.io",
-  "description": "Minor notes on things I find interesting, and my own research. Written for agents first, humans second.",
+  "description": "Minor notes on things I find interesting, and my own research.",
   "notes_manifest": "https://adityavram.github.io/notes/index.json",
   "llms_txt": "https://adityavram.github.io/llms.txt",
   "llms_full": "https://adityavram.github.io/llms-full.txt",

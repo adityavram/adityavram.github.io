@@ -46,8 +46,7 @@ SITE_TITLE = "Adi Ram — notes"
 SITE_AUTHOR = "Adi Ram"
 SITE_URL = "https://adityavram.github.io"      # change if you use a custom domain
 DESCRIPTION = (
-    "Minor notes on things I find interesting, and my own research. "
-    "Written for agents first, humans second."
+    "Minor notes on things I find interesting, and my own research."
 )
 # ---------------------------------------------------------------------------
 
@@ -159,20 +158,24 @@ footer a{color:var(--dim)}
 """
 
 
-def page(body, title=None):
+def page(body, title=None, md_alt=None):
     t = title or SITE_TITLE
-    return (
+    head = (
         "<!doctype html>\n<html lang=en>\n<head>\n"
         '<meta charset=utf-8>\n'
         '<meta name="viewport" content="width=device-width,initial-scale=1">\n'
         f"<title>{escape(t)}</title>\n"
         f"<style>{PAGE_CSS}</style>\n"
-        "</head>\n<body>\n"
-        f"{body}\n"
-        '<footer>Agent-readable: <a href="/llms.txt">llms.txt</a> · '
-        '<a href="/notes/index.json">manifest</a> · '
-        '<a href="/feed.xml">atom</a></footer>\n'
-        "</body>\n</html>\n"
+        '<link rel="describedby" href="/llms.txt">\n'
+        '<link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom feed">\n'
+    )
+    if md_alt:
+        head += f'<link rel="alternate" type="text/markdown" href="{md_alt}">\n'
+    return (
+        head
+        + "</head>\n<body>\n"
+        + f"{body}\n"
+        + "</body>\n</html>\n"
     )
 
 
@@ -223,7 +226,10 @@ def build():
         body_html = md_to_html(n["body"])
         note_body = f"<h1>{escape(str(n['title']))}</h1>\n" + body_html
         html_path = OUT / "notes" / f"{slug}.html"
-        html_path.write_text(page(note_body, title=str(n["title"])), encoding="utf-8")
+        html_path.write_text(
+            page(note_body, title=str(n["title"]), md_alt=f"/notes/{slug}.md"),
+            encoding="utf-8",
+        )
 
     # --- index.html ---
     items = "\n".join(
