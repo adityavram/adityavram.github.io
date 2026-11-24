@@ -40,5 +40,3 @@ The six sub-approaches of H12.2 — integer point structure, lattice point count
 The open question is whether the asymmetry is real or an artifact of the frameworks we have tried. Every framework tested treats the prime as the degenerate d=2 case and the semiprime as the d=4 case, and the d=4 case reduces to factoring. The question is whether there is a framework where identifying a semiprime is cheaper than factoring, where "is N a semiprime?" is not the same question as "what are the factors of N?"
 
 The current directions, from the project's directions file, are non-uniform algorithms (a different method per N, rather than one algorithm uniform over all semiprimes), structure in specific semiprimes (average-case factoring might be easier than worst-case, though no known structure enables poly-time factoring for even 1% of semiprimes), and the residue-tower cascade (the 2-adic filtration of identification gates, whether the free content of a semiprime accessible in poly time without factoring extends above the quadratic layer).
-
-The note is in progress. The open question is whether the asymmetry is real or an artifact of the frameworks tried.

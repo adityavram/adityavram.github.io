@@ -39,8 +39,6 @@ The open question is whether the asymmetry is real or an artifact of the framewo
 
 The current directions, from the project's directions file, are non-uniform algorithms (a different method per N, rather than one algorithm uniform over all semiprimes), structure in specific semiprimes (average-case factoring might be easier than worst-case, though no known structure enables poly-time factoring for even 1% of semiprimes), and the residue-tower cascade (the 2-adic filtration of identification gates, whether the free content of a semiprime accessible in poly time without factoring extends above the quadratic layer).
 
-The note is in progress. The open question is whether the asymmetry is real or an artifact of the frameworks tried.
-
 ---
 
 # Giving agents deadlines
