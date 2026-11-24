@@ -1,5 +1,5 @@
 
-I wanted my agents to serve a frontier language model at a tenth the cost of naive deployment, at equal quality. Inference is the dominant cost of serving one, so a 10× win is a 10× drop in the dominant cost line. The deployable levers get you ~1.5 to 4×, not 10×. The 10× lives in serving without the forward pass, and nobody has shipped that.
+Deployable levers get you ~1.5 to 4× cost reduction, not the 10× I wanted. The 10× lives in serving without the forward pass, and nobody has shipped that. I was trying to serve a frontier language model at a tenth the cost of naive deployment, at equal quality, and inference is the dominant cost of serving one, so a 10× win is a 10× drop in the dominant cost line.
 
 ## The validated pareto
 
@@ -11,9 +11,9 @@ Quantization is the other deployable lever, and it is a dead end at this scale. 
 
 The hypothesis: the trained weights encode the function. The cheaper serve reads the weight structure directly rather than invoking it. The existence proof is the brain, which serves a lifetime of training at ~10⁶× the efficiency of the dense pass.
 
-The bridge architecture is the concrete attempt. Compose sparse-autoencoder features (which localize a circuit) with activation-grounded weight decompositions (which are editable). On a known circuit in GPT-2 Small, a genuinely sparse SAE reconstructs layer 8 with 100% of the crossentropy recovered. Three features causally carry the circuit. But steering those features into a control prompt does not induce the behavior. The features that read the computation are not the features you can write to reproduce it.
+The SAE half localizes the circuit and is faithful, but it is not writable. On a known circuit in GPT-2 Small, a genuinely sparse SAE reconstructs layer8 with 100% of the crossentropy recovered. Three features causally carry the circuit. But steering those features into a control prompt does not induce the behavior. The features that read the computation are not the features you can write to reproduce it.
 
-The ASPD half is the complement: weight components are editable and effective, about 300-600× the SAE steering effect, but at toy scale they do not converge to sparse components. The two halves have complementary strengths. The bridge hypothesis is that composing them gets faithful, sparse, and writable simultaneously, and that is a GPU-scale experiment, not a toy.
+The ASPD half is writable, but at toy scale it is not sparse: weight components are editable and effective, ~300-600× the SAE steering effect, but they do not converge to sparse components. The two halves have complementary strengths. The bridge hypothesis is that composing them gets faithful, sparse, and writable simultaneously, and that is a GPU-scale experiment, not a toy.
 
 ## The ideal
 
