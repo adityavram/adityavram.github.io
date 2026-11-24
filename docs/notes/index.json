@@ -1,7 +1,7 @@
 [
   {
-    "id": "0001-in-progress",
-    "title": "In Progress - There's no such thing as primes",
+    "id": "0001-how-to-make-my-agents-factor-faster",
+    "title": "How to make my agents factor faster",
     "date": "2026-11-24",
     "tags": [
       "math",
@@ -9,32 +9,32 @@
       "factoring",
       "in-progress"
     ],
-    "url_html": "https://adityavram.github.io/notes/0001-in-progress.html",
-    "url_md": "https://adityavram.github.io/notes/0001-in-progress.md"
+    "url_html": "https://adityavram.github.io/notes/0001-how-to-make-my-agents-factor-faster.html",
+    "url_md": "https://adityavram.github.io/notes/0001-how-to-make-my-agents-factor-faster.md"
   },
   {
-    "id": "0002-how-to-make-agents-faster",
-    "title": "How to make agents faster",
+    "id": "0002-how-to-make-my-agents-faster",
+    "title": "How to make my agents faster",
     "date": "2026-11-23",
     "tags": [
       "agents",
       "evals",
       "negative-result"
     ],
-    "url_html": "https://adityavram.github.io/notes/0002-how-to-make-agents-faster.html",
-    "url_md": "https://adityavram.github.io/notes/0002-how-to-make-agents-faster.md"
+    "url_html": "https://adityavram.github.io/notes/0002-how-to-make-my-agents-faster.html",
+    "url_md": "https://adityavram.github.io/notes/0002-how-to-make-my-agents-faster.md"
   },
   {
-    "id": "0003-how-to-make-my-agent-write-more-like-a-human",
-    "title": "How to make my agent write more like a human",
+    "id": "0003-how-to-make-my-agents-write-more-like-a-human",
+    "title": "How to make my agents write more like a human",
     "date": "2026-11-23",
     "tags": [
       "writing",
       "agents",
       "skills"
     ],
-    "url_html": "https://adityavram.github.io/notes/0003-how-to-make-my-agent-write-more-like-a-human.html",
-    "url_md": "https://adityavram.github.io/notes/0003-how-to-make-my-agent-write-more-like-a-human.md"
+    "url_html": "https://adityavram.github.io/notes/0003-how-to-make-my-agents-write-more-like-a-human.html",
+    "url_md": "https://adityavram.github.io/notes/0003-how-to-make-my-agents-write-more-like-a-human.md"
   },
   {
     "id": "0004-how-to-make-agents-cheaper",
@@ -50,15 +50,15 @@
     "url_md": "https://adityavram.github.io/notes/0004-how-to-make-agents-cheaper.md"
   },
   {
-    "id": "0005-software-is-bad-actually",
-    "title": "Software is bad, actually",
+    "id": "0005-how-to-make-my-agents-write-less-software",
+    "title": "How to make my agents write less software",
     "date": "2026-11-23",
     "tags": [
       "software",
       "engineering",
       "simplicity"
     ],
-    "url_html": "https://adityavram.github.io/notes/0005-software-is-bad-actually.html",
-    "url_md": "https://adityavram.github.io/notes/0005-software-is-bad-actually.md"
+    "url_html": "https://adityavram.github.io/notes/0005-how-to-make-my-agents-write-less-software.html",
+    "url_md": "https://adityavram.github.io/notes/0005-how-to-make-my-agents-write-less-software.md"
   }
 ]

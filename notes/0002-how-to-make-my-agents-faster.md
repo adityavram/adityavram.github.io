@@ -1,5 +1,5 @@
 ---
-title: How to make agents faster
+title: How to make my agents faster
 date: 2026-11-23
 tags: [agents, evals, negative-result]
 status: public

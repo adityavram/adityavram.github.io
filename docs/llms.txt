@@ -5,11 +5,11 @@
 This site publishes minor research notes. Every note has a Markdown version at the same URL with .md appended; agents should prefer those. A concatenated dump of all notes is at /llms-full.txt for grep-based retrieval. A machine-readable manifest is at /notes/index.json.
 
 ## Notes
-- [In Progress - There's no such thing as primes](https://adityavram.github.io/notes/0001-in-progress.md): 2026-11-24 [math, research, factoring, in-progress]
-- [How to make agents faster](https://adityavram.github.io/notes/0002-how-to-make-agents-faster.md): 2026-11-23 [agents, evals, negative-result]
-- [How to make my agent write more like a human](https://adityavram.github.io/notes/0003-how-to-make-my-agent-write-more-like-a-human.md): 2026-11-23 [writing, agents, skills]
+- [How to make my agents factor faster](https://adityavram.github.io/notes/0001-how-to-make-my-agents-factor-faster.md): 2026-11-24 [math, research, factoring, in-progress]
+- [How to make my agents faster](https://adityavram.github.io/notes/0002-how-to-make-my-agents-faster.md): 2026-11-23 [agents, evals, negative-result]
+- [How to make my agents write more like a human](https://adityavram.github.io/notes/0003-how-to-make-my-agents-write-more-like-a-human.md): 2026-11-23 [writing, agents, skills]
 - [How to make my agents cheaper](https://adityavram.github.io/notes/0004-how-to-make-agents-cheaper.md): 2026-11-23 [inference, cost, llm, research]
-- [Software is bad, actually](https://adityavram.github.io/notes/0005-software-is-bad-actually.md): 2026-11-23 [software, engineering, simplicity]
+- [How to make my agents write less software](https://adityavram.github.io/notes/0005-how-to-make-my-agents-write-less-software.md): 2026-11-23 [software, engineering, simplicity]
 
 ## Optional
 - [Manifest](https://adityavram.github.io/notes/index.json)

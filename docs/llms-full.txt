@@ -1,6 +1,6 @@
-# In Progress - There's no such thing as primes
+# How to make my agents factor faster
 # date: 2026-11-24
-# url: https://adityavram.github.io/notes/0001-in-progress.md
+# url: https://adityavram.github.io/notes/0001-how-to-make-my-agents-factor-faster.md
 
 
 I'm researching whether you can tell a prime from a semiprime without factoring. You can't. Telling a prime from a semiprime is the same problem as factoring. There's no such thing as a prime number; there's a number with two divisors and a number with four divisors, and the second one is the factoring problem in disguise.
@@ -41,9 +41,9 @@ The current directions, from the project's directions file, are non-uniform algo
 
 ---
 
-# How to make agents faster
+# How to make my agents faster
 # date: 2026-11-23
-# url: https://adityavram.github.io/notes/0002-how-to-make-agents-faster.md
+# url: https://adityavram.github.io/notes/0002-how-to-make-my-agents-faster.md
 
 
 I frequently found that I needed my agents to go faster. I experimented with a number of solutions, including telling the agent in context that it had a certain amount of time and imposing a hard computational cap that the agent was unaware of.
@@ -86,9 +86,9 @@ Don't tell a rushed agent its deadline. That was the one combination that reliab
 
 ---
 
-# How to make my agent write more like a human
+# How to make my agents write more like a human
 # date: 2026-11-23
-# url: https://adityavram.github.io/notes/0003-how-to-make-my-agent-write-more-like-a-human.md
+# url: https://adityavram.github.io/notes/0003-how-to-make-my-agents-write-more-like-a-human.md
 
 
 I frequently found that my agents wrote like agents. I wanted to fix that, ideally using a mechanism that would work reasonably well for Claude, OAI, and GLM models. Surprisingly, the best rules involved limited style critiques, and focused on very different primitives of good writing.
@@ -225,9 +225,9 @@ The ideal is the ~3-4× you can ship today: spec decode on the cheapest hardware
 
 ---
 
-# Software is bad, actually
+# How to make my agents write less software
 # date: 2026-11-23
-# url: https://adityavram.github.io/notes/0005-software-is-bad-actually.md
+# url: https://adityavram.github.io/notes/0005-how-to-make-my-agents-write-less-software.md
 
 
 Software is a place where things break in ways the person running it does not understand. We treat it as good, but more software is not good. That is exponentially more true with agentic codebases. The ideal is short and easy to understand, and it does exactly what the business or the person needs.

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://adityavram.github.io/</loc></url>
-<url><loc>https://adityavram.github.io/notes/0001-in-progress.html</loc></url>
-<url><loc>https://adityavram.github.io/notes/0001-in-progress.md</loc></url>
-<url><loc>https://adityavram.github.io/notes/0002-how-to-make-agents-faster.html</loc></url>
-<url><loc>https://adityavram.github.io/notes/0002-how-to-make-agents-faster.md</loc></url>
-<url><loc>https://adityavram.github.io/notes/0003-how-to-make-my-agent-write-more-like-a-human.html</loc></url>
-<url><loc>https://adityavram.github.io/notes/0003-how-to-make-my-agent-write-more-like-a-human.md</loc></url>
+<url><loc>https://adityavram.github.io/notes/0001-how-to-make-my-agents-factor-faster.html</loc></url>
+<url><loc>https://adityavram.github.io/notes/0001-how-to-make-my-agents-factor-faster.md</loc></url>
+<url><loc>https://adityavram.github.io/notes/0002-how-to-make-my-agents-faster.html</loc></url>
+<url><loc>https://adityavram.github.io/notes/0002-how-to-make-my-agents-faster.md</loc></url>
+<url><loc>https://adityavram.github.io/notes/0003-how-to-make-my-agents-write-more-like-a-human.html</loc></url>
+<url><loc>https://adityavram.github.io/notes/0003-how-to-make-my-agents-write-more-like-a-human.md</loc></url>
 <url><loc>https://adityavram.github.io/notes/0004-how-to-make-agents-cheaper.html</loc></url>
 <url><loc>https://adityavram.github.io/notes/0004-how-to-make-agents-cheaper.md</loc></url>
-<url><loc>https://adityavram.github.io/notes/0005-software-is-bad-actually.html</loc></url>
-<url><loc>https://adityavram.github.io/notes/0005-software-is-bad-actually.md</loc></url>
+<url><loc>https://adityavram.github.io/notes/0005-how-to-make-my-agents-write-less-software.html</loc></url>
+<url><loc>https://adityavram.github.io/notes/0005-how-to-make-my-agents-write-less-software.md</loc></url>
 </urlset>

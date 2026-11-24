@@ -3,7 +3,7 @@
 <head>
 <meta charset=utf-8>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Software is bad, actually</title>
+<title>How to make my agents write less software</title>
 <style>
 :root{--bg:#1b1b1d;--fg:#d6d6d6;--dim:#7a7a7d;--line:#2a2a2d;--link:#8ab4d8;--code:#242427}
 body{max-width:650px;margin:50px auto;padding:0 16px;
@@ -27,10 +27,10 @@ ul.notes li{margin:.4rem 0}
 </style>
 <link rel="describedby" href="/llms.txt">
 <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom feed">
-<link rel="alternate" type="text/markdown" href="/notes/0005-software-is-bad-actually.md">
+<link rel="alternate" type="text/markdown" href="/notes/0005-how-to-make-my-agents-write-less-software.md">
 </head>
 <body>
-<h1>Software is bad, actually</h1>
+<h1>How to make my agents write less software</h1>
 <p>Software is a place where things break in ways the person running it does not understand. We treat it as good, but more software is not good. That is exponentially more true with agentic codebases. The ideal is short and easy to understand, and it does exactly what the business or the person needs.</p>
 <h2>Where more breaks</h2>
 <p>More code is more surface area for bugs. Most failures are in how one line meets the next, not in the line itself. No one running the software holds a million-line codebase in their head. The bug lives in the gap between what any one person understands and what the code actually does. This is not a feeling. It is structural: the probability a codebase behaves as its author intended falls as it grows, because the assumptions any one line depends on spread across more lines than any one person tracks.</p>

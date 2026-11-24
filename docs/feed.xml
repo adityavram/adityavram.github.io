@@ -7,9 +7,9 @@
 <updated>2026-11-24T00:00:00Z</updated>
 <author><name>Adi Ram</name></author>
 <entry>
-<title>In Progress - There&#x27;s no such thing as primes</title>
-<link href="https://adityavram.github.io/notes/0001-in-progress.md"/>
-<id>https://adityavram.github.io/notes/0001-in-progress.md</id>
+<title>How to make my agents factor faster</title>
+<link href="https://adityavram.github.io/notes/0001-how-to-make-my-agents-factor-faster.md"/>
+<id>https://adityavram.github.io/notes/0001-how-to-make-my-agents-factor-faster.md</id>
 <updated>2026-11-24T00:00:00Z</updated>
 <published>2026-11-24T00:00:00Z</published>
 <content type="text/markdown">
@@ -51,9 +51,9 @@ The current directions, from the project&#x27;s directions file, are non-uniform
 </content>
 </entry>
 <entry>
-<title>How to make agents faster</title>
-<link href="https://adityavram.github.io/notes/0002-how-to-make-agents-faster.md"/>
-<id>https://adityavram.github.io/notes/0002-how-to-make-agents-faster.md</id>
+<title>How to make my agents faster</title>
+<link href="https://adityavram.github.io/notes/0002-how-to-make-my-agents-faster.md"/>
+<id>https://adityavram.github.io/notes/0002-how-to-make-my-agents-faster.md</id>
 <updated>2026-11-23T00:00:00Z</updated>
 <published>2026-11-23T00:00:00Z</published>
 <content type="text/markdown">
@@ -97,9 +97,9 @@ Don&#x27;t tell a rushed agent its deadline. That was the one combination that r
 </content>
 </entry>
 <entry>
-<title>How to make my agent write more like a human</title>
-<link href="https://adityavram.github.io/notes/0003-how-to-make-my-agent-write-more-like-a-human.md"/>
-<id>https://adityavram.github.io/notes/0003-how-to-make-my-agent-write-more-like-a-human.md</id>
+<title>How to make my agents write more like a human</title>
+<link href="https://adityavram.github.io/notes/0003-how-to-make-my-agents-write-more-like-a-human.md"/>
+<id>https://adityavram.github.io/notes/0003-how-to-make-my-agents-write-more-like-a-human.md</id>
 <updated>2026-11-23T00:00:00Z</updated>
 <published>2026-11-23T00:00:00Z</published>
 <content type="text/markdown">
@@ -238,9 +238,9 @@ The ideal is the ~3-4× you can ship today: spec decode on the cheapest hardware
 </content>
 </entry>
 <entry>
-<title>Software is bad, actually</title>
-<link href="https://adityavram.github.io/notes/0005-software-is-bad-actually.md"/>
-<id>https://adityavram.github.io/notes/0005-software-is-bad-actually.md</id>
+<title>How to make my agents write less software</title>
+<link href="https://adityavram.github.io/notes/0005-how-to-make-my-agents-write-less-software.md"/>
+<id>https://adityavram.github.io/notes/0005-how-to-make-my-agents-write-less-software.md</id>
 <updated>2026-11-23T00:00:00Z</updated>
 <published>2026-11-23T00:00:00Z</published>
 <content type="text/markdown">

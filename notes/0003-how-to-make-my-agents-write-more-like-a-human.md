@@ -1,5 +1,5 @@
 ---
-title: How to make my agent write more like a human
+title: How to make my agents write more like a human
 date: 2026-11-23
 tags: [writing, agents, skills]
 status: public

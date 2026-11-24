@@ -3,7 +3,7 @@
 <head>
 <meta charset=utf-8>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>How to make agents faster</title>
+<title>How to make my agents faster</title>
 <style>
 :root{--bg:#1b1b1d;--fg:#d6d6d6;--dim:#7a7a7d;--line:#2a2a2d;--link:#8ab4d8;--code:#242427}
 body{max-width:650px;margin:50px auto;padding:0 16px;
@@ -27,10 +27,10 @@ ul.notes li{margin:.4rem 0}
 </style>
 <link rel="describedby" href="/llms.txt">
 <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom feed">
-<link rel="alternate" type="text/markdown" href="/notes/0002-how-to-make-agents-faster.md">
+<link rel="alternate" type="text/markdown" href="/notes/0002-how-to-make-my-agents-faster.md">
 </head>
 <body>
-<h1>How to make agents faster</h1>
+<h1>How to make my agents faster</h1>
 <p>I frequently found that I needed my agents to go faster. I experimented with a number of solutions, including telling the agent in context that it had a certain amount of time and imposing a hard computational cap that the agent was unaware of.</p>
 <p>The thing that worked best was a silent hard cap. It made the agents go faster, had side benefits towards cost, and a negligible hit to quality. A notable exception to this was in math, where the quality decrease was substantial. Details below.</p>
 <h2>Setup</h2>

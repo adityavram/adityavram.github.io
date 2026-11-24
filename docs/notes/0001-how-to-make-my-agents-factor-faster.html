@@ -3,7 +3,7 @@
 <head>
 <meta charset=utf-8>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>In Progress - There&#x27;s no such thing as primes</title>
+<title>How to make my agents factor faster</title>
 <style>
 :root{--bg:#1b1b1d;--fg:#d6d6d6;--dim:#7a7a7d;--line:#2a2a2d;--link:#8ab4d8;--code:#242427}
 body{max-width:650px;margin:50px auto;padding:0 16px;
@@ -27,10 +27,10 @@ ul.notes li{margin:.4rem 0}
 </style>
 <link rel="describedby" href="/llms.txt">
 <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom feed">
-<link rel="alternate" type="text/markdown" href="/notes/0001-in-progress.md">
+<link rel="alternate" type="text/markdown" href="/notes/0001-how-to-make-my-agents-factor-faster.md">
 </head>
 <body>
-<h1>In Progress - There&#x27;s no such thing as primes</h1>
+<h1>How to make my agents factor faster</h1>
 <p>I&#x27;m researching whether you can tell a prime from a semiprime without factoring. You can&#x27;t. Telling a prime from a semiprime is the same problem as factoring. There&#x27;s no such thing as a prime number; there&#x27;s a number with two divisors and a number with four divisors, and the second one is the factoring problem in disguise.</p>
 <h2>The asymmetry</h2>
 <p>Primality testing is poly-time. AKS settles whether a single number N is prime in time polynomial in log N. Semiprime identification, deciding whether N is a product of exactly two primes, is equivalent to factoring. An oracle that computes d(N), the number of divisors of N, factors any semiprime N = pq in polynomial time: test primes m and watch whether d(N·m) is 6 or 8, and 6 means m divides N. So computing d(N) is factoring.</p>

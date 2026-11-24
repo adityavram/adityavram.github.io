@@ -1,5 +1,5 @@
 ---
-title: In Progress - There's no such thing as primes
+title: How to make my agents factor faster
 date: 2026-11-24
 tags: [math, research, factoring, in-progress]
 status: public

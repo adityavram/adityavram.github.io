@@ -1,5 +1,5 @@
 ---
-title: Software is bad, actually
+title: How to make my agents write less software
 date: 2026-11-23
 tags: [software, engineering, simplicity]
 status: public
