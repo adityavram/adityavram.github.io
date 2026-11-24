@@ -138,23 +138,24 @@ def inline(text):
 
 
 PAGE_CSS = """
-body{max-width:70ch;margin:2rem auto;padding:0 1rem;
-  font:15px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  color:#111;background:#fff}
-a{color:#111;text-decoration:underline;text-underline-offset:2px}
-a:hover{background:#111;color:#fff;text-decoration:none}
-h1{font-size:1.2rem;font-weight:600;margin:0 0 1rem}
-h2{font-size:1.05rem;font-weight:600;margin:1.6rem 0 .6rem}
-h3{font-size:1rem;font-weight:600;margin:1.2rem 0 .4rem}
-p,li{margin:.4rem 0}
-pre{background:#f4f4f4;padding:.8rem;overflow-x:auto;font-size:13px}
-code{background:#f4f4f4;padding:.1rem .3rem}
+:root{--bg:#111213;--fg:#d6d6d6;--dim:#666;--line:#222;--link:#8ab4d8}
+body{max-width:650px;margin:50px auto;padding:0 16px;
+  background:var(--bg);color:var(--fg);
+  font:0.9rem/1.5 "SF Mono",SFMono-Regular,ui-monospace,Menlo,Consolas,"Liberation Mono",monospace;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+h1{font-size:1rem;font-weight:600;margin:0 0 1.5rem}
+h2{font-size:0.95rem;font-weight:600;margin:1.8rem 0 .6rem;color:#fff}
+h3{font-size:0.9rem;font-weight:600;margin:1.2rem 0 .4rem;color:#fff}
+p,li{margin:.5rem 0}
+pre{background:#1c1d1f;padding:.8rem;overflow-x:auto;font-size:0.8rem;border:1px solid var(--line)}
+code{background:#1c1d1f;padding:.1rem .3rem}
 pre code{background:none;padding:0}
-.meta{color:#666;font-size:13px;margin:-.5rem 0 1.5rem}
-nav{margin-bottom:2rem;font-size:13px}
 ul.notes{list-style:none;padding:0}
-ul.notes li{margin:.3rem 0}
-footer{margin-top:3rem;color:#666;font-size:12px;border-top:1px solid #eee;padding-top:1rem}
+ul.notes li{margin:.35rem 0}
+footer{margin-top:4rem;color:var(--dim);font-size:0.75rem;border-top:1px solid var(--line);padding-top:1rem}
+footer a{color:var(--dim)}
 """
 
 
@@ -220,22 +221,13 @@ def build():
         md_path.write_text(n["body"], encoding="utf-8")
 
         body_html = md_to_html(n["body"])
-        tags = ", ".join(n["tags"]) if isinstance(n["tags"], list) else n["tags"]
-        note_body = (
-            f"<h1>{escape(str(n['title']))}</h1>\n"
-            f'<div class=meta>{escape(str(n["date"]))}'
-            + (f" · {escape(tags)}" if tags else "")
-            + f' · <a href="/notes/{slug}.md">.md</a></div>\n'
-            + body_html
-        )
+        note_body = f"<h1>{escape(str(n['title']))}</h1>\n" + body_html
         html_path = OUT / "notes" / f"{slug}.html"
         html_path.write_text(page(note_body, title=str(n["title"])), encoding="utf-8")
 
     # --- index.html ---
     items = "\n".join(
-        f'<li><time>{escape(str(n["date"]))}</time> '
-        f'<a href="/notes/{n["slug"]}.html">{escape(str(n["title"]))}</a> '
-        f'<a href="/notes/{n["slug"]}.md" class=raw>[md]</a></li>'
+        f'<li><a href="/notes/{n["slug"]}.html">{escape(str(n["title"]))}</a></li>'
         for n in notes
     )
     idx_body = (
