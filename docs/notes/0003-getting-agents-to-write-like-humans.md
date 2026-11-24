@@ -1,21 +1,21 @@
 
-I frequently found that my agents wrote like agents. Instructing them to write better changed nothing. Banning the words that mark machine prose made it worse: the agent stripped the banned words and kept the padding. What worked was a skill that tells the agent what the writing is for, and then checks its finished draft against a list of specific mistakes. This note is the reasoning, and the skill is at the end.
+I frequently found that my agents wrote like agents. Instructing them to write better changed nothing. Banning the words that mark machine prose made it worse: the agent stripped the banned words and kept the padding. What worked was a skill that tells the agent what the writing is for, then checks its finished draft against a list of specific mistakes. Details below.
 
 ## Why instruction fails
 
-Writing has one job: get to the point and hold the reader's interest. Being insightful earns the interest, and being blunt gets you to the point. Twain's rule covers the rest: revise to use fewer words rather than more.
+Writing has one job: get to the point and hold the reader's interest. Insight earns the interest, and bluntness gets you to the point. Twain's rule covers the rest: revise to use fewer words rather than more.
 
-An agent is trained to sound good to the average reader, which is a different objective, and the difference shows up as prose that pads the sentence, hedges the claim, and announces the point instead of making it. The agent cannot see this from the inside, for the same reason a person who believes they are funny cannot be told to be funnier. Instructing an agent to be blunt fails when the agent already believes it is.
+An agent is trained to sound good to the average reader, which is a different objective, and the difference shows up as prose that pads, hedges, and announces instead of making the point. The agent cannot see this from inside, the same way a person who believes they are funny cannot be told to be funnier. Instructing an agent to be blunt fails when the agent already believes it is.
 
-I have direct evidence, because the first version of this note was written by an agent that had been told all of this in advance. It restated the rule against the rule of three as a rule of three. Told to stop, it produced a stack of four short sentences. Asked to be plain, it offered a euphemism, "land", in place of the plain words. The habit lives somewhere the instruction cannot reach.
+I have direct evidence: the first version of this note was written by an agent that had been told all of this in advance. It restated the rule against the rule of three as a rule of three. Told to stop, it produced a stack of four short sentences. Asked to be plain, it offered a euphemism, "land", in place of the plain words. The habit lives where instruction cannot reach.
 
-A checklist reaches it, because checking a finished draft is pattern-matching, and pattern-matching is the thing the model is good at. "Be blunt" is invisible to a model that believes it already is. "Delete every sentence that opens with 'it's worth noting'" is a pattern in text, and the model finds patterns in text all day. That is the whole trick: turn the virtue into a pattern, and the audit from introspection into search.
+A checklist reaches it, because auditing a finished draft is pattern-matching, and pattern-matching is what the model is good at. "Be blunt" is invisible to a model that believes it already is. "Delete every sentence that opens with 'it's worth noting'" is a pattern, and the model finds patterns all day. That is the whole trick: turn the virtue into a pattern, and the audit from introspection into search.
 
 ## The skill
 
-The skill states the goal and derives a few rules from it. It names the mistakes concretely enough to search for, and it requires the audit on a finished draft rather than during writing, because drafting against a checklist produces stiff prose.
+The skill states the goal and derives rules from it. The mistakes are named concretely enough to search for, and the audit runs on the finished draft, because drafting against a checklist produces stiff prose.
 
-The full skill is below. Paste it into `~/.config/opencode/skills/write-human/SKILL.md` to install, then load it with `skill("write-human")` when revising a draft.
+The full skill is below. Paste it into `~/.config/opencode/skills/write-human/SKILL.md` to install, then load it with `skill("write-human")` when revising.
 
 ```
 ---
