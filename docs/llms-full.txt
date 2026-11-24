@@ -54,17 +54,17 @@ I frequently found that my agents wrote like agents. Instructing them to write b
 
 Writing well is two things: capture the reader's interest, and get to the point. Ideally you do nothing else.
 
-Agents fail at both. The first cause is the corpus: they learn prose from the web, where a cooking blog buries the recipe under nine paragraphs about the blogger's childhood and a home-decor post spends three hundred words on its "design journey" before showing a single room. The agent's sense of normal prose is calibrated on this, and the padding transfers.
+Agents fail at both. The first cause is the corpus: they learn prose from the web, where a cooking blog buries the recipe under nine paragraphs about the blogger's childhood and a home-decor post spends three hundred words on its "design journey" before showing a single room. This corpus is the agent's sense of normal prose. The padding transfers.
 
-The second cause is worse, because instruction cannot fix it. An agent generates one token at a time, and while generating, that is all it perceives. It cannot step back and see the whole draft, so it never notices a paragraph taking twice the words its point needs. Telling it to be concise fails: it already believes it is concise, because from inside the generation there is always one more reasonable next token.
+The second cause is worse: instruction cannot fix it. An agent generates and perceives one token at a time. It cannot step back and see the whole draft, so it never notices a paragraph taking twice the words its point needs. Telling it to be concise fails: it already believes it is concise, because from inside, every next token looks reasonable.
 
-The fix follows from the cause. If the agent cannot perceive the whole draft while writing, revision must be a separate step that takes the finished text back as input. Read back, the draft is whole, all at once, no longer produced one token at a time. Padding invisible during writing is visible during reading.
+The fix follows from the cause. If the agent cannot perceive the whole draft while writing, revision must be a separate step that takes the finished text back as input. Read back, the draft is whole, all at once. Padding invisible during writing is visible during reading.
 
-I have direct evidence: the first version of this note was written by an agent that had been told all of this in advance. It restated the rule against the rule of three as a rule of three. Told to stop, it produced a stack of four short sentences. Asked to be plain, it offered a euphemism, "land", instead of the plain words. Instruction never reached the habit. Reading the draft back did.
+The first version of this note was written by an agent that had been told all of this in advance. It restated the rule against the rule of three as a rule of three. Told to stop, it produced a stack of four short sentences. Asked to be plain, it offered a euphemism, "land". Instruction never reached the habit. Reading the draft back did.
 
 ## The skill
 
-The skill names the two jobs and the mistakes that break them, concretely enough to search for. It audits the finished draft, never the drafting, because an agent can only perceive the draft once it is written.
+The skill names the two jobs and the mistakes that break them, concretely enough to search for. It audits the finished draft, never the drafting.
 
 The full skill is below. Paste it into `~/.config/opencode/skills/write-human/SKILL.md` to install, then load it with `skill("write-human")` when revising.
 
