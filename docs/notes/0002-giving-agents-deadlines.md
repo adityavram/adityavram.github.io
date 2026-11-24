@@ -36,5 +36,3 @@ The silent cap made every run faster and cheaper. Quality held within noise in e
 If you run agents, default to a silent hard cap. It gives you speed and cost control, and you pay almost nothing in quality — unless the task needs the time, as math does. Set the cap generously enough that it rarely binds on work that needs to think.
 
 Don't tell a rushed agent its deadline. That was the one combination that reliably made things worse, and it's the one people reach for first.
-
-The instinct here is wrong. "Deadlines fix over-deliberation" doesn't hold. What matters is whether the cap binds: fast agents finish before it does, and slow agents panic when you tell them it's tight. Test the prompt per model and per task. There's no universal answer.
