@@ -35,5 +35,17 @@
     ],
     "url_html": "https://adityavram.github.io/notes/0003-getting-agents-to-write-like-humans.html",
     "url_md": "https://adityavram.github.io/notes/0003-getting-agents-to-write-like-humans.md"
+  },
+  {
+    "id": "0005-software-is-bad-actually",
+    "title": "Software is bad, actually",
+    "date": "2026-11-23",
+    "tags": [
+      "software",
+      "engineering",
+      "simplicity"
+    ],
+    "url_html": "https://adityavram.github.io/notes/0005-software-is-bad-actually.html",
+    "url_md": "https://adityavram.github.io/notes/0005-software-is-bad-actually.md"
   }
 ]

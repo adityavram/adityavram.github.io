@@ -8,6 +8,7 @@ This site publishes minor research notes. Every note has a Markdown version at t
 - [In Progress - There's no such thing as primes](https://adityavram.github.io/notes/0004-in-progress.md): 2026-11-24 [math, research, factoring, in-progress]
 - [Giving agents deadlines](https://adityavram.github.io/notes/0002-giving-agents-deadlines.md): 2026-11-23 [agents, evals, negative-result]
 - [Getting agents to write like humans](https://adityavram.github.io/notes/0003-getting-agents-to-write-like-humans.md): 2026-11-23 [writing, agents, skills]
+- [Software is bad, actually](https://adityavram.github.io/notes/0005-software-is-bad-actually.md): 2026-11-23 [software, engineering, simplicity]
 
 ## Optional
 - [Manifest](https://adityavram.github.io/notes/index.json)

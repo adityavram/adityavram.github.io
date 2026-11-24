@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Software is bad, actually</title>
+<style>
+:root{--bg:#1b1b1d;--fg:#d6d6d6;--dim:#7a7a7d;--line:#2a2a2d;--link:#8ab4d8;--code:#242427}
+body{max-width:650px;margin:50px auto;padding:0 16px;
+  background:var(--bg);color:var(--fg);
+  font:0.95rem/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+h1{font-size:1.1rem;font-weight:600;margin:0 0 1.5rem}
+h2{font-size:1rem;font-weight:600;margin:1.8rem 0 .6rem;color:#fff}
+h3{font-size:0.95rem;font-weight:600;margin:1.2rem 0 .4rem;color:#fff}
+p,li{margin:.5rem 0}
+pre{background:var(--code);padding:.8rem;overflow-x:auto;font-size:0.85rem;border:1px solid var(--line)}
+code{background:var(--code);padding:.1rem .3rem;font-size:0.85em}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1.2rem 0;font-size:0.9rem}
+th,td{padding:.45rem .6rem;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:#fff;font-weight:600;border-bottom:1px solid var(--dim)}
+ul.notes{list-style:none;padding:0}
+ul.notes li{margin:.4rem 0}
+</style>
+<link rel="describedby" href="/llms.txt">
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom feed">
+<link rel="alternate" type="text/markdown" href="/notes/0005-software-is-bad-actually.md">
+</head>
+<body>
+<h1>Software is bad, actually</h1>
+<p>Software is a place where something can break, in a way the person running it does not understand. We treat it as good, but more software is not good. That is exponentially more true in a world of agentic codebases. The ideal is short and easy to understand, and it does exactly what the business or the person needs.</p>
+<h2>Where more breaks</h2>
+<p>More code is more surface area for bugs. Every line is a place something can fail, and most failures are not in the line itself but in the way it meets the next one. The person running the software does not understand the whole, because no person can hold a million-line codebase in their head. The bug lives in the gap between what any one person understands and what the code actually does. This is not a feeling. It is structural: the probability that a codebase behaves as its author intended falls as the codebase grows, because the assumptions any one line depends on are spread across more lines than any one person tracks.</p>
+<h2>The agentic multiplier</h2>
+<p>A coding agent makes this worse in a particular way. Give an agent a 50-line problem and it returns a 1000-line solution. The agent piles on error handling for cases that will never happen, logging no one reads, config no one sets, and abstraction layers the core logic does not need. The aggregate is 20 times the code for the same job, and no one can hold it in their head. The agent optimizes for &quot;looks thorough&quot; because thorough is what rates well, not for &quot;does the job&quot; — the same failure mode as the verbose-writing agent, and for the same reason: the model cannot see the whole from inside the generation.</p>
+<h2>Less is more</h2>
+<p>qmail is a mail server D. J. Bernstein wrote in the 1990s. It is roughly a fifth the size of sendmail, the dominant server of the era, and it had one remote security hole in its first seven years. Bernstein offered $500 for any remote hole. sendmail had many. Less code, fewer places to fail.</p>
+<p>The first grep, written by Doug McIlroy in 1973, was a few hundred lines. It did one thing: print lines matching a pattern. The grep on a modern Linux distribution is larger by orders of magnitude. The job did not get orders of magnitude bigger. The original did the job.</p>
+<p>Slack desktop, in its early Electron versions, used roughly a gigabyte of RAM to run one chat application. The same application as a terminal client — weechat, irrsi — uses megabytes. Electron bundles a full browser and a JavaScript runtime to do one task, because writing it as a web page was faster to ship. More software, more memory, no more capability.</p>
+<h2>The ideal</h2>
+<p>The ideal is not less than this, and not more. A 50-line script that does the job beats a 1000-line program that does the job and six other things. The six other things are where the bugs live, and none of them is the job.</p>
+</body>
+</html>
