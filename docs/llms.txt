@@ -6,6 +6,7 @@ This site publishes minor research notes. Every note has a Markdown version at t
 
 ## Notes
 - [Giving agents deadlines](https://adityavram.github.io/notes/0002-giving-agents-deadlines.md): 2026-11-23 [agents, evals, negative-result]
+- [Sounding like AI](https://adityavram.github.io/notes/0003-sounding-like-ai.md): 2026-11-23 [writing, ai, skills]
 
 ## Optional
 - [Manifest](https://adityavram.github.io/notes/index.json)
