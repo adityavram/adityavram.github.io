@@ -1,17 +1,5 @@
 [
   {
-    "id": "0001-agent-readable-by-default",
-    "title": "This site is agent-readable by default",
-    "date": "2026-11-23",
-    "tags": [
-      "meta",
-      "agents",
-      "llms-txt"
-    ],
-    "url_html": "https://adityavram.github.io/notes/0001-agent-readable-by-default.html",
-    "url_md": "https://adityavram.github.io/notes/0001-agent-readable-by-default.md"
-  },
-  {
     "id": "0002-deadlines-not-a-quality-lever",
     "title": "Telling an agent its deadline is not a quality lever",
     "date": "2026-11-23",

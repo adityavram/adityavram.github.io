@@ -2,7 +2,7 @@
 title: This site is agent-readable by default
 date: 2026-11-23
 tags: [meta, agents, llms-txt]
-status: public
+status: draft
 ---
 
 This is the first note on the site, and it's also the documentation for
