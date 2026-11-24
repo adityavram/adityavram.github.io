@@ -218,15 +218,19 @@ Families reach for different crutches. Audit your own family&#x27;s list hardest
 <updated>2026-11-23T00:00:00Z</updated>
 <published>2026-11-23T00:00:00Z</published>
 <content type="text/markdown">
-Software is a place where something can break, in a way the person running it does not understand. We treat it as good, but more software is not good. That is exponentially more true in a world of agentic codebases. The ideal is short and easy to understand, and it does exactly what the business or the person needs.
+Software is a place where something can break, in a way the person running it does not understand. We treat it as good, but more software is not good. That is exponentially more true with agentic codebases. The ideal is short and easy to understand, and it does exactly what the business or the person needs.
 
 ## Where more breaks
 
-More code is more surface area for bugs. Every line is a place something can fail, and most failures are not in the line itself but in the way it meets the next one. The person running the software does not understand the whole, because no person can hold a million-line codebase in their head. The bug lives in the gap between what any one person understands and what the code actually does. This is not a feeling. It is structural: the probability that a codebase behaves as its author intended falls as the codebase grows, because the assumptions any one line depends on are spread across more lines than any one person tracks.
+More code is more surface area for bugs. Every line is a place something can fail, and most failures are in how it meets the next line, not in the line itself. The person running the software does not understand the whole, because no one holds a million-line codebase in their head. The bug lives in the gap between what any one person understands and what the code actually does. This is not a feeling. It is structural: the probability a codebase behaves as its author intended falls as it grows, because the assumptions any one line depends on spread across more lines than any one person tracks.
 
 ## The agentic multiplier
 
-A coding agent makes this worse in a particular way. Give an agent a 50-line problem and it returns a 1000-line solution. The agent piles on error handling for cases that will never happen, logging no one reads, config no one sets, and abstraction layers the core logic does not need. The aggregate is 20 times the code for the same job, and no one can hold it in their head. The agent optimizes for &quot;looks thorough&quot; because thorough is what rates well, not for &quot;does the job&quot; — the same failure mode as the verbose-writing agent, and for the same reason: the model cannot see the whole from inside the generation.
+A coding agent makes this worse. Give an agent a 50-line problem and it returns a 1000-line solution. The agent piles on error handling for cases that will never happen, logging no one reads, config no one sets, and abstraction layers the core logic does not need. The aggregate is 20 times the code for the same job, and no one can hold it in their head. The agent optimizes for &quot;looks thorough&quot; because thorough is what rates well, not for &quot;does the job&quot; — the same failure mode as the verbose-writing agent, and for the same reason: the model cannot see the whole from inside the generation.
+
+## Why agents cannot clean it up
+
+You might think the answer is to keep the agents always on and let them clean up the software. That won&#x27;t work. The agents fail too. They cause infrastructure overload, and the cost is too high. But the main reason is that continuous rolling outages are continuous outages. The root cause of the software outage is a different outage each time. It is still a user-facing outage. The agent that cleans up is part of the same failure surface. It is not a repair layer above it.
 
 ## Less is more
 
