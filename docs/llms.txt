@@ -10,6 +10,7 @@ This site publishes minor research notes. Every note has a Markdown version at t
 - [How to make my agents write more like a human](https://adityavram.github.io/notes/0003-how-to-make-my-agents-write-more-like-a-human.md): 2026-11-23 [writing, agents, skills]
 - [How to make my agents cheaper](https://adityavram.github.io/notes/0004-how-to-make-agents-cheaper.md): 2026-11-23 [inference, cost, llm, research]
 - [Software is bad, actually](https://adityavram.github.io/notes/0005-software-is-bad-actually.md): 2026-11-23 [software, engineering, simplicity]
+- [In Progress - The corpus of knowledge that cannot be expressed as language](https://adityavram.github.io/notes/0006-cannot-be-expressed-as-language.md): 2026-11-22 [knowledge, language, ineffable, in-progress]
 
 ## Optional
 - [Manifest](https://adityavram.github.io/notes/index.json)
