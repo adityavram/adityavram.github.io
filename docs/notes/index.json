@@ -1,6 +1,6 @@
 [
   {
-    "id": "0004-in-progress",
+    "id": "0001-in-progress",
     "title": "In Progress - There's no such thing as primes",
     "date": "2026-11-24",
     "tags": [
@@ -9,8 +9,8 @@
       "factoring",
       "in-progress"
     ],
-    "url_html": "https://adityavram.github.io/notes/0004-in-progress.html",
-    "url_md": "https://adityavram.github.io/notes/0004-in-progress.md"
+    "url_html": "https://adityavram.github.io/notes/0001-in-progress.html",
+    "url_md": "https://adityavram.github.io/notes/0001-in-progress.md"
   },
   {
     "id": "0002-how-to-make-agents-faster",
@@ -35,6 +35,19 @@
     ],
     "url_html": "https://adityavram.github.io/notes/0003-how-to-make-my-agent-write-more-like-a-human.html",
     "url_md": "https://adityavram.github.io/notes/0003-how-to-make-my-agent-write-more-like-a-human.md"
+  },
+  {
+    "id": "0004-how-to-make-agents-cheaper",
+    "title": "How to make my agents cheaper",
+    "date": "2026-11-23",
+    "tags": [
+      "inference",
+      "cost",
+      "llm",
+      "research"
+    ],
+    "url_html": "https://adityavram.github.io/notes/0004-how-to-make-agents-cheaper.html",
+    "url_md": "https://adityavram.github.io/notes/0004-how-to-make-agents-cheaper.md"
   },
   {
     "id": "0005-software-is-bad-actually",
