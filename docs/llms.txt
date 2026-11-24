@@ -5,7 +5,7 @@
 This site publishes minor research notes. Every note has a Markdown version at the same URL with .md appended; agents should prefer those. A concatenated dump of all notes is at /llms-full.txt for grep-based retrieval. A machine-readable manifest is at /notes/index.json.
 
 ## Notes
-- [Telling an agent its deadline is not a quality lever](https://adityavram.github.io/notes/0002-deadlines-not-a-quality-lever.md): 2026-11-23 [agents, evals, negative-result]
+- [Giving agents deadlines](https://adityavram.github.io/notes/0002-deadlines-not-a-quality-lever.md): 2026-11-23 [agents, evals, negative-result]
 
 ## Optional
 - [Manifest](https://adityavram.github.io/notes/index.json)

@@ -1,5 +1,5 @@
 ---
-title: Telling an agent its deadline is not a quality lever
+title: Giving agents deadlines
 date: 2026-11-23
 tags: [agents, evals, negative-result]
 status: public

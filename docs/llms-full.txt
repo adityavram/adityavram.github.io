@@ -1,4 +1,4 @@
-# Telling an agent its deadline is not a quality lever
+# Giving agents deadlines
 # date: 2026-11-23
 # url: https://adityavram.github.io/notes/0002-deadlines-not-a-quality-lever.md
 
