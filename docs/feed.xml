@@ -79,7 +79,149 @@ The model families have different defaults, so the cluster shape points at which
 
 ## The skill
 
-I packaged the catalog and the cluster protocol as an OpenCode skill, `anti-ai-writing`. Load it with `skill(&quot;anti-ai-writing&quot;)` before revising a draft. It marks every tell, clusters by paragraph, rewrites the clusters, replaces vocabulary tells with something specific, cuts signposts and summaries, collapses rule-of-three lists, varies sentence length, and takes a side. Then it re-reads once, because over-correction is its own tell.
+The full skill is below. Paste it into `~/.config/opencode/skills/anti-ai-writing/SKILL.md` to install, then load it with `skill(&quot;anti-ai-writing&quot;)` before revising a draft.
+
+```
+---
+name: anti-ai-writing
+description: Use when writing or revising prose that must read as human. Catches and removes the vocabulary, punctuation, structural, and rhetorical patterns that make text sound AI-generated. Apply to any draft before publishing.
+---
+
+# Anti AI Writing
+
+Removes the patterns that make prose read as AI-generated. Use it on any draft meant for human readers.
+
+## When to use
+
+- Before publishing a note, post, or email
+- When revising an AI-assisted draft
+- When a reader has called the text &quot;AI slop&quot; or &quot;AI-coded&quot;
+
+## How to use
+
+Scan the draft for the patterns below. Delete or rewrite each hit. One tell in isolation is not evidence. A cluster is. Fix the cluster, not the single word.
+
+## Vocabulary tells
+
+Words AI reaches for far more often than humans do. Replace with something specific, or cut.
+
+- delve, leverage, navigate, landscape, tapestry, realm, underscore, showcase, testament
+- nuanced, robust, seamless, powerful, comprehensive, holistic, multifaceted, pivotal
+- &quot;it&#x27;s worth noting&quot;, &quot;it&#x27;s important to note&quot;, &quot;it&#x27;s important to remember&quot;
+- &quot;at the end of the day&quot;, &quot;in today&#x27;s landscape&quot;, &quot;the reality is&quot;
+- boosters with no anchor: significantly, substantially, remarkably, notably, considerably
+
+## Punctuation tells
+
+- Em dash overuse. About one per 300 to 500 words is fine. Several per paragraph is the tell. Use a comma, a period, or a parenthesis instead.
+- Curly quotes where straight quotes would do
+- Bold inside body copy for emphasis
+- Emoji in headings or as emphasis
+- Decorative unicode (arrows, box-drawing characters)
+
+## Structural tells
+
+- The rule of three. &quot;Fast, scalable, and secure.&quot; Three items whether the world offers two or seven. Pick the one that matters.
+- &quot;Not X, it is Y&quot; contrast where the negation adds nothing. &quot;This is not about speed, it is about reliability.&quot; Say &quot;This is about reliability.&quot;
+- Announce-then-answer. &quot;This piece will examine...&quot; Start with the first claim.
+- Signposting. &quot;more on that below&quot;, &quot;as we&#x27;ll see&quot;. Delete.
+- Section-end summaries. &quot;As we can see, caching is effective.&quot; End on the last real point.
+- Uniform paragraph rhythm. Four paragraphs of the same length. Vary on purpose.
+- Fluff sandwich. A generality, the content, a restated generality. Keep the middle.
+- Paragraph-final restatement. &quot;Ultimately, ...&quot; / &quot;In short, ...&quot;. Cut.
+- Mechanical transitions. &quot;Furthermore&quot;, &quot;Moreover&quot;, &quot;Additionally&quot; at the start of every paragraph. Connect naturally or split into separate sentences.
+
+## Rhetorical tells
+
+- Rhetorical questions as section openers. Replace with a statement.
+- Passive voice as habit. &quot;It was determined that the leak originated in the cache.&quot; Say &quot;We traced the leak to the cache.&quot;
+- Hedging stacks. &quot;It could perhaps maybe arguably...&quot; Make the claim or drop it.
+- Meta-references. &quot;In this article, we&#x27;ll explore...&quot; The reader knows they are reading the article.
+- Faux-conversational pivots. &quot;Here&#x27;s the thing:&quot;, &quot;Let me be clear:&quot;, &quot;The truth is:&quot;. Cut them. Start with the point.
+
+## Tone tells
+
+- Marketing language. Powerful, seamless, revolutionary, game-changing. These describe anything, so they describe nothing. Use the number instead.
+- Paired adjectives with &quot;yet&quot;. &quot;Simple yet powerful.&quot; Pick one.
+- &quot;Excited to announce&quot; / &quot;thrilled to share&quot;. State what happened.
+- &quot;Whether you&#x27;re X or Y&quot; false inclusivity. Address the actual reader.
+- Corporate cliches. Move the needle, synergy, paradigm shift, growth mindset.
+- Internet cliches. Hits different, chef&#x27;s kiss, rent-free, let that sink in.
+- Exclamation clusters. More than one per paragraph reads as performed excitement.
+
+## Model-specific tells
+
+Model families have different defaults. Stack the tells from the family that wrote the draft.
+
+### OpenAI / GPT
+
+- Vocabulary: delve, tapestry, realm, navigate, underscore, testament
+- Sets of three inside sentences
+- Symmetrical structure: an intro, three to five evenly weighted body sections, a conclusion that restates the intro
+- Heading emoji
+- &quot;I hope this email finds you well&quot;
+- Confident, polished neutrality. Rarely sounds like a specific person
+- Em dashes: historically heavy, reduced in current versions
+
+### Claude
+
+- Hedging and meta-commentary: &quot;I should note&quot;, &quot;that said&quot;, &quot;the nuance is&quot;
+- Acknowledgment before answering: &quot;great question&quot;, &quot;genuinely tricky area&quot;
+- Longer, clause-heavy sentences
+- Trade-offs surfaced unprompted: &quot;on one hand / on the other&quot;
+- &quot;I&#x27;m not certain&quot; more readily than other models
+- Em dashes: still overuses. Claude is the only family above human rates in a 2026 Economist comparison
+- Mannered prose: metaphor where a plain phrase would do (&quot;a dial worth turning&quot; for &quot;a parameter worth varying&quot;)
+
+### Gemini
+
+- Formats first, writes second. Bold lead-ins, nested bullets, tables for simple answers
+- Encyclopedic, briefing tone
+- Cautious, policy-aware disclaimers (&quot;consult a professional&quot;)
+- List-first answers where a paragraph would do
+
+### GLM
+
+- Less cataloged in English prose. Documented tells are from fiction generation: code-switching, local vividness overwriting prior state, resolution templates over causality
+- Treat as Claude and GPT tells until more is known
+
+## The density principle
+
+A single tell is not evidence. Humans use em dashes, write lists of three, and say &quot;delve&quot; once. The tell is density and co-occurrence. Three &quot;robust&quot; tokens in one paragraph. &quot;It&#x27;s worth noting&quot; plus an em dash plus &quot;simple yet powerful&quot; in the same paragraph. Flag the cluster, not the word.
+
+Over-correcting makes a new tell. Text stripped to nothing but commas and periods reads as flattened. Keep good tools (em dashes, lists) when they are deliberate choices.
+
+## What is not a tell
+
+- A single em dash, or the word &quot;delve&quot; once
+- Correct grammar, curly quotes, polish
+- Ordinary transitions (however, so, because)
+- One list of three, when the three are genuinely distinct
+- Bullets for steps, specs, comparisons
+- Formal vocabulary, contractions or none
+- Non-native English patterns. A person&#x27;s English is never a tell
+
+## Editing protocol
+
+1. Read the draft once. Mark every tell.
+2. Cluster by paragraph. Two or more tells in one paragraph means rewrite the paragraph.
+3. Replace vocabulary tells with something specific: a number, a name, a concrete action.
+4. Cut signposts, meta-references, section-end summaries.
+5. Collapse rule-of-three lists to the item that matters.
+6. Vary sentence and paragraph length. Break uniform rhythm.
+7. Take a side. If a paragraph could appear on a competitor&#x27;s page unchanged, it says nothing distinctive.
+8. Re-read once more. Over-correction is its own tell.
+
+## Sources
+
+- Adam Dunkels, &quot;It Isn&#x27;t The Emdashes&quot; (32-pattern catalog, 2026)
+- David S. Kemp, &quot;The AI Tells Reference Sheet&quot; (2026)
+- The Economist, &quot;How to spot AI writing&quot; (2026)
+- Graphite Five Percent, &quot;AI Tells&quot; (model-family comparison, 2026)
+- Molixa, &quot;Which AI Wrote This&quot; (model fingerprints, 2026)
+- Dynatrace Content Style Guide, &quot;Remove AI writing patterns&quot;
+- Reinhart et al., PNAS 2025, &quot;Do LLMs write like humans?&quot;
+```
 </content>
 </entry>
 </feed>
