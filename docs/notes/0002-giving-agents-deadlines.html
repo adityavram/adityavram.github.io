@@ -19,6 +19,9 @@ p,li{margin:.5rem 0}
 pre{background:var(--code);padding:.8rem;overflow-x:auto;font-size:0.85rem;border:1px solid var(--line)}
 code{background:var(--code);padding:.1rem .3rem;font-size:0.85em}
 pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1.2rem 0;font-size:0.9rem}
+th,td{padding:.45rem .6rem;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:#fff;font-weight:600;border-bottom:1px solid var(--dim)}
 ul.notes{list-style:none;padding:0}
 ul.notes li{margin:.4rem 0}
 </style>
@@ -33,14 +36,14 @@ ul.notes li{margin:.4rem 0}
 <h2>Setup</h2>
 <p>I tested on two axes. First, whether the agent was told of its time cap. Second, whether the cap was tight or loose. Those two axes produced a 2×2 matrix of conditions.</p>
 <p>To avoid over-indexing on a single benchmark, I ran it across four domains:</p>
-<li>Math on MATH-500</li>
-<li>Creative writing</li>
-<li>Web research</li>
-<li>Coding on SWE-bench Verified</li>
+<ul><li>Math on MATH-500</li><li>Creative writing</li><li>Web research</li><li>Coding on SWE-bench Verified</li></ul>
 <p>Coding used three models: deepseek-v4.1-flash, glm-5.3-flash, and kimi-k2.7-code. The other three used deepseek-v4.1-flash. About 1,800 runs total.</p>
 <h2>Results</h2>
 <p>The hypothesis was that telling the agent its deadline would help where it over-deliberates and hurt where it needs to think. The data rejected it in every domain.</p>
-<p>| domain | speed | aware, loose cap | aware, tight cap | |---|---|---|---| | math | fast | +3.4pp | +3.4pp | | writing | fast | +0.03 | +0.14 | | web | slow | +0.0pp | −3.3pp | | coding (deepseek) | mixed | −3.0pp | −2.8pp |</p>
+<table>
+<thead><tr><th>domain</th><th>speed</th><th>aware, loose cap</th><th>aware, tight cap</th></tr></thead>
+<tbody><tr><td>math</td><td>fast</td><td>+3.4pp</td><td>+3.4pp</td></tr><tr><td>writing</td><td>fast</td><td>+0.03</td><td>+0.14</td></tr><tr><td>web</td><td>slow</td><td>+0.0pp</td><td>−3.3pp</td></tr><tr><td>coding (deepseek)</td><td>mixed</td><td>−3.0pp</td><td>−2.8pp</td></tr></tbody>
+</table>
 <p>The case I expected to help most was web research, where the agent over-browses. It was the case where awareness hurt most. At the tight cap, telling the agent its deadline dropped accuracy 3.3 points. The agent rushes when told a deadline is tight, and it rushes worse than it browses.</p>
 <p>The silent cap made every run faster and cheaper. Quality held within noise in every domain but math, where the tight cap cost about seven points.</p>
 <h2>Implications</h2>

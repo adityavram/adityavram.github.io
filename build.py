@@ -78,18 +78,42 @@ def parse_frontmatter(text):
 
 def md_to_html(md):
     """Pragmatic minimal markdown -> HTML. Handles headings, paragraphs,
-    fenced code, links, inline code, bold. Not a full spec — just notes."""
+    fenced code, tables, bullet lists, links, inline code, bold."""
     lines = md.split("\n")
     out = []
     in_code = False
     para = []
+    i = 0
 
     def flush():
         if para:
             out.append("<p>" + " ".join(para) + "</p>")
             para.clear()
 
-    for line in lines:
+    def is_table_sep(l):
+        s = l.strip()
+        if not (s.startswith("|") and s.endswith("|")):
+            return False
+        inner = s.strip("|")
+        cells = inner.split("|")
+        return all(re.fullmatch(r":?-{1,}:?", c.strip()) for c in cells) and "-" in s
+
+    def parse_table(start):
+        header = [c.strip() for c in lines[start].strip().strip("|").split("|")]
+        rows = []
+        j = start + 2
+        while j < len(lines) and lines[j].strip().startswith("|"):
+            rows.append([c.strip() for c in lines[j].strip().strip("|").split("|")])
+            j += 1
+        h = "<tr>" + "".join(f"<th>{inline(x)}</th>" for x in header) + "</tr>"
+        body = "".join(
+            "<tr>" + "".join(f"<td>{inline(x)}</td>" for x in r) + "</tr>"
+            for r in rows
+        )
+        return f"<table>\n<thead>{h}</thead>\n<tbody>{body}</tbody>\n</table>", j
+
+    while i < len(lines):
+        line = lines[i]
         if line.strip().startswith("```"):
             if in_code:
                 out.append("</code></pre>")
@@ -98,30 +122,47 @@ def md_to_html(md):
                 flush()
                 out.append("<pre><code>")
                 in_code = True
+            i += 1
             continue
         if in_code:
             out.append(escape(line))
+            i += 1
+            continue
+        if line.strip().startswith("|") and i + 1 < len(lines) and is_table_sep(lines[i + 1]):
+            flush()
+            html, j = parse_table(i)
+            out.append(html)
+            i = j
             continue
         if line.startswith("### "):
             flush()
             out.append(f"<h3>{escape(line[4:])}</h3>")
+            i += 1
             continue
         if line.startswith("## "):
             flush()
             out.append(f"<h2>{escape(line[3:])}</h2>")
+            i += 1
             continue
         if line.startswith("# "):
             flush()
             out.append(f"<h2>{escape(line[2:])}</h2>")
+            i += 1
             continue
         if line.startswith("- ") or line.startswith("* "):
             flush()
-            out.append(f"<li>{inline(line[2:])}</li>")
+            items = []
+            while i < len(lines) and (lines[i].startswith("- ") or lines[i].startswith("* ")):
+                items.append(f"<li>{inline(lines[i][2:])}</li>")
+                i += 1
+            out.append("<ul>" + "".join(items) + "</ul>")
             continue
         if line.strip() == "":
             flush()
+            i += 1
             continue
         para.append(inline(line))
+        i += 1
     flush()
     if in_code:
         out.append("</code></pre>")
@@ -151,6 +192,9 @@ p,li{margin:.5rem 0}
 pre{background:var(--code);padding:.8rem;overflow-x:auto;font-size:0.85rem;border:1px solid var(--line)}
 code{background:var(--code);padding:.1rem .3rem;font-size:0.85em}
 pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1.2rem 0;font-size:0.9rem}
+th,td{padding:.45rem .6rem;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:#fff;font-weight:600;border-bottom:1px solid var(--dim)}
 ul.notes{list-style:none;padding:0}
 ul.notes li{margin:.4rem 0}
 """
