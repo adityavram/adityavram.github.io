@@ -1,5 +1,5 @@
 ---
-title: Giving agents deadlines
+title: How to make agents faster
 date: 2026-11-23
 tags: [agents, evals, negative-result]
 status: public

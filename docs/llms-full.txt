@@ -41,9 +41,9 @@ The current directions, from the project's directions file, are non-uniform algo
 
 ---
 
-# Giving agents deadlines
+# How to make agents faster
 # date: 2026-11-23
-# url: https://adityavram.github.io/notes/0002-giving-agents-deadlines.md
+# url: https://adityavram.github.io/notes/0002-how-to-make-agents-faster.md
 
 
 I frequently found that I needed my agents to go faster. I experimented with a number of solutions, including telling the agent in context that it had a certain amount of time and imposing a hard computational cap that the agent was unaware of.
@@ -86,9 +86,9 @@ Don't tell a rushed agent its deadline. That was the one combination that reliab
 
 ---
 
-# Getting agents to write like humans
+# How to make my agent write more like a human
 # date: 2026-11-23
-# url: https://adityavram.github.io/notes/0003-getting-agents-to-write-like-humans.md
+# url: https://adityavram.github.io/notes/0003-how-to-make-my-agent-write-more-like-a-human.md
 
 
 I frequently found that my agents wrote like agents. I wanted to fix that, ideally using a mechanism that would work reasonably well for Claude, OAI, and GLM models. Surprisingly, the best rules involved limited style critiques, and focused on very different primitives of good writing.

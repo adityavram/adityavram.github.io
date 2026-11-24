@@ -13,28 +13,28 @@
     "url_md": "https://adityavram.github.io/notes/0004-in-progress.md"
   },
   {
-    "id": "0002-giving-agents-deadlines",
-    "title": "Giving agents deadlines",
+    "id": "0002-how-to-make-agents-faster",
+    "title": "How to make agents faster",
     "date": "2026-11-23",
     "tags": [
       "agents",
       "evals",
       "negative-result"
     ],
-    "url_html": "https://adityavram.github.io/notes/0002-giving-agents-deadlines.html",
-    "url_md": "https://adityavram.github.io/notes/0002-giving-agents-deadlines.md"
+    "url_html": "https://adityavram.github.io/notes/0002-how-to-make-agents-faster.html",
+    "url_md": "https://adityavram.github.io/notes/0002-how-to-make-agents-faster.md"
   },
   {
-    "id": "0003-getting-agents-to-write-like-humans",
-    "title": "Getting agents to write like humans",
+    "id": "0003-how-to-make-my-agent-write-more-like-a-human",
+    "title": "How to make my agent write more like a human",
     "date": "2026-11-23",
     "tags": [
       "writing",
       "agents",
       "skills"
     ],
-    "url_html": "https://adityavram.github.io/notes/0003-getting-agents-to-write-like-humans.html",
-    "url_md": "https://adityavram.github.io/notes/0003-getting-agents-to-write-like-humans.md"
+    "url_html": "https://adityavram.github.io/notes/0003-how-to-make-my-agent-write-more-like-a-human.html",
+    "url_md": "https://adityavram.github.io/notes/0003-how-to-make-my-agent-write-more-like-a-human.md"
   },
   {
     "id": "0005-software-is-bad-actually",
