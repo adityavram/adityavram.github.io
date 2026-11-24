@@ -42,7 +42,7 @@ SRC = ROOT / "notes"
 OUT = ROOT / "docs"
 
 # --- Configure these -------------------------------------------------------
-SITE_TITLE = "Adi Ram — notes"
+SITE_TITLE = "Adi Ram"
 SITE_AUTHOR = "Adi Ram"
 SITE_URL = "https://adityavram.github.io"      # change if you use a custom domain
 DESCRIPTION = (
@@ -238,7 +238,6 @@ def build():
     )
     idx_body = (
         f"<h1>{escape(SITE_TITLE)}</h1>\n"
-        f"<p>{escape(DESCRIPTION)}</p>\n"
         f'<ul class=notes>\n{items}\n</ul>\n'
     )
     (OUT / "index.html").write_text(page(idx_body), encoding="utf-8")
