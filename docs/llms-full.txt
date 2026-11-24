@@ -260,19 +260,11 @@ The ideal is not less than this, and not more. A 50-line script that does the jo
 
 ---
 
-# In Progress - The corpus of knowledge that cannot be expressed as language
+# In Progress - How to be happy
 # date: 2026-11-22
-# url: https://adityavram.github.io/notes/0006-cannot-be-expressed-as-language.md
+# url: https://adityavram.github.io/notes/0006-how-to-be-happy.md
 
 
-1. Love.
-
-2. Emotions more generally. We can express "anger" through metaphors like "seeing red", but the language is incomparable to the emotion.
-
-3. Music. It's quite difficult to express the difference between music and noise, but we know it when we hear it.
-
-4. Good writing. There is a difference between good writing and bad writing. But the set of rules is very rarely well defined.
-
-5. Work ethic. Some people do work harder than others, yet that bar is very difficult to put into words.
+I'll let you know when I figure it out.
 
 ---
