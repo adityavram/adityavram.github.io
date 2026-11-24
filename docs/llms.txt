@@ -5,6 +5,7 @@
 This site publishes minor research notes. Every note has a Markdown version at the same URL with .md appended; agents should prefer those. A concatenated dump of all notes is at /llms-full.txt for grep-based retrieval. A machine-readable manifest is at /notes/index.json.
 
 ## Notes
+- [In Progress](https://adityavram.github.io/notes/0004-in-progress.md): 2026-11-24 [math, research, factoring, in-progress]
 - [Giving agents deadlines](https://adityavram.github.io/notes/0002-giving-agents-deadlines.md): 2026-11-23 [agents, evals, negative-result]
 - [Getting agents to write like humans](https://adityavram.github.io/notes/0003-getting-agents-to-write-like-humans.md): 2026-11-23 [writing, agents, skills]
 

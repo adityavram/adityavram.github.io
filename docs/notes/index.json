@@ -1,5 +1,18 @@
 [
   {
+    "id": "0004-in-progress",
+    "title": "In Progress",
+    "date": "2026-11-24",
+    "tags": [
+      "math",
+      "research",
+      "factoring",
+      "in-progress"
+    ],
+    "url_html": "https://adityavram.github.io/notes/0004-in-progress.html",
+    "url_md": "https://adityavram.github.io/notes/0004-in-progress.md"
+  },
+  {
     "id": "0002-giving-agents-deadlines",
     "title": "Giving agents deadlines",
     "date": "2026-11-23",
