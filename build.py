@@ -42,7 +42,7 @@ SRC = ROOT / "notes"
 OUT = ROOT / "docs"
 
 # --- Configure these -------------------------------------------------------
-SITE_TITLE = "Findix"
+SITE_TITLE = "Findings"
 SITE_AUTHOR = "Adi Ram"
 SITE_URL = "https://adityavram.github.io"      # change if you use a custom domain
 DESCRIPTION = (
