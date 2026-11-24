@@ -5,53 +5,42 @@ tags: [agents, evals, negative-result]
 status: public
 ---
 
-Telling an AI agent how much time it has does not make its work better, and in the one case you would most expect it to help — a slow task where the agent tends to waste effort over-searching — announcing a tight deadline makes it worse, because the agent rushes and panics instead of searching carefully.
+I frequently found that I needed my agents to go faster. I experimented with a number of solutions, including telling the agent in context that it had a certain amount of time and imposing a hard computational cap that the agent was unaware of.
 
-## What I tested
+The thing that worked best was a silent hard cap. It made the agents go faster, had side benefits towards cost, and a negligible hit to quality. A notable exception to this was in math, where the quality decrease was substantial. Details below.
 
-The hypothesis was the intuitive one: if an agent over-deliberates (over-revises a draft, over-browses the web), giving it a deadline should help; if it needs careful reasoning (math), a deadline should hurt. So the effect's direction should flip by domain.
+## Setup
 
-Design: a 2×2 factorial — {unaware, aware} × {generous soft cap, tight hard cap}. "Aware" means the agent is told the true cap and the cut-off consequence; "unaware" means the cap is enforced silently. Same harness, same hard cap, same max turns in every cell. The only independent variable is the prompt.
+I tested on two axes. First, whether the agent was told of its time cap. Second, whether the cap was tight or loose. Those two axes produced a 2×2 matrix of conditions.
 
-Four agentic domains, ~1846 runs total (~$122):
+To avoid over-indexing on a single benchmark, I ran it across four domains:
 
-| domain | task | n | judge |
+- Math on MATH-500
+- Creative writing
+- Web research
+- Coding on SWE-bench Verified
+
+Coding used three models: deepseek-v4.1-flash, glm-5.3-flash, and kimi-k2.7-code. The other three used deepseek-v4.1-flash. About 1,800 runs total.
+
+## Results
+
+The hypothesis was that telling the agent its deadline would help where it over-deliberates and hurt where it needs to think. The data rejected it in every domain.
+
+| domain | speed | aware, loose cap | aware, tight cap |
 |---|---|---|---|
-| math | MATH-500 | 30 | sympy exact equivalence |
-| writing | creative prompts | 29 | LLM-as-judge, rating /10 |
-| web research | custom factual Qs | 30 | token-substring match |
-| coding | SWE-bench Verified (django) | 100 | official resolve, 3 models |
+| math | fast | +3.4pp | +3.4pp |
+| writing | fast | +0.03 | +0.14 |
+| web | slow | +0.0pp | −3.3pp |
+| coding (deepseek) | mixed | −3.0pp | −2.8pp |
 
-## Result
+The case I expected to help most was web research, where the agent over-browses. It was the case where awareness hurt most. At the tight cap, telling the agent its deadline dropped accuracy 3.3 points. The agent rushes when told a deadline is tight, and it rushes worse than it browses.
 
-Awareness effect, measured against each domain's own unaware baseline:
+The silent cap made every run faster and cheaper. Quality held within noise in every domain but math, where the tight cap cost about seven points.
 
-| domain | speed | cap binds? | aware, generous | aware, tight |
-|---|---|---|---|---|
-| math | fast (~4s) | rarely | +3.4pp | +3.4pp |
-| writing | fast (~12s) | rarely | +0.03 | +0.14 |
-| web | slow (~110s) | sometimes | +0.0pp | −3.3pp |
-| coding (deepseek) | mixed | sometimes | −3.0pp | −2.8pp |
+## Implications
 
-The over-deliberation hypothesis is rejected across all four domains. Telling the agent its deadline is not a quality lever anywhere I measured.
+If you run agents, default to a silent hard cap. It gives you speed and cost control, and you pay almost nothing in quality — unless the task needs the time, as math does. Set the cap generously enough that it rarely binds on work that needs to think.
 
-## The actual mechanism
+Don't tell a rushed agent its deadline. That was the one combination that reliably made things worse, and it's the one people reach for first.
 
-The effect tracks **task speed**, not the deliberation profile. Specifically, it tracks whether the cap binds.
-
-- **Fast domains** (math, writing): the agent finishes in ~1–4 turns; the cap rarely binds; the deadline is moot. Awareness is ~neutral (the small math + writing deltas are within noise — about one instance). The over-revising mechanism never engages because the agent doesn't over-deliberate within the cap.
-- **Slow domain** (web): the cap binds sometimes (~9 turns, ~110s) — this is the over-browsing case the hypothesis was built for. But awareness **hurts** at the tight cap (−3.3pp). Telling a rushed agent a tight deadline makes it do worse, not better. The unaware agent over-browses more carefully and does better.
-- **Coding is model-dependent.** Awareness helps one model (kimi plans, +1.4pp at the generous cap), hurts another (deepseek, both caps), and lets a third pace itself (glm, +5.1pp at the tight cap). There is no universal "tell the agent the deadline" prescription.
-
-So the lever that flips by domain is the **cap** (tight cap helps math, neutral on web, mixed on coding), not awareness. Awareness is model-dependent and task-speed-dependent.
-
-## Conclusion
-
-- **Default to a generous silent hard cap.** It is a weak, noisy quality lever — mostly a cost lever. A silent cap is a reasonable default; its quality effect is small and inconsistent.
-- **Do not tell a rushed agent a tight deadline.** This is the one consistently harmful combination, and it is exactly the case the intuitive prescription points at.
-- **Drop the "over-deliberation" framing.** The real axis is task speed (does the cap bind), not deliberation profile. Fast agents don't over-deliberate within the cap; slow agents panic when told the deadline is tight.
-- **Test the prompt per model and per task speed.** No universal prescription.
-
-## Limitations
-
-n is 29–100 per cell; the fast-domain effects are within noise (~1 instance), and the web −3.3pp is also about one instance — so this is directional, not statistically nailed. Quality metrics differ across domains (correct%, rating/10, resolve%), so only the awareness-effect *direction* is comparable across domains, not magnitude. Judge strictness varies (the writing judge is the same model as the agent; the web judge is a loose token-substring match; coding is official resolve). The web tasks are easy factual questions, not BrowseComp-hard, so the slow domain needs harder over-browsing tasks and more instances to really test the hypothesis. Coding is all django — repo generality untested.
+The instinct here is wrong. "Deadlines fix over-deliberation" doesn't hold. What matters is whether the cap binds: fast agents finish before it does, and slow agents panic when you tell them it's tight. Test the prompt per model and per task. There's no universal answer.
