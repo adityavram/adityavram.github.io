@@ -48,42 +48,44 @@ Don't tell a rushed agent its deadline. That was the one combination that reliab
 # url: https://adityavram.github.io/notes/0003-getting-agents-to-write-like-humans.md
 
 
-I frequently found that my agents wrote like agents. Instructing them to write better changed nothing. Banning the words that mark machine prose made it worse: the agent stripped the banned words and kept the padding. What worked was a skill that tells the agent what the writing is for, then checks its finished draft against a list of specific mistakes. Details below.
+I frequently found that my agents wrote like agents. Instructing them to write better changed nothing. Banning the words that mark machine prose made it worse: the agent stripped the banned words and kept the padding. What worked was a revision skill: the agent writes the draft, then reads the finished text back as input and cuts it down against a list of specific mistakes. Details below.
 
-## Why instruction fails
+## How to write well
 
-Writing has one job: get to the point and hold the reader's interest. Insight earns the interest, and bluntness gets you to the point. Twain's rule covers the rest: revise to use fewer words rather than more.
+Writing well is two things: capture the reader's interest, and get to the point. Ideally you do nothing else.
 
-An agent is trained to sound good to the average reader, which is a different objective, and the difference shows up as prose that pads, hedges, and announces instead of making the point. The agent cannot see this from inside, the same way a person who believes they are funny cannot be told to be funnier. Instructing an agent to be blunt fails when the agent already believes it is.
+Agents fail at both, and the first cause is the corpus. Agents learn prose from the web, where a cooking blog buries the recipe under nine paragraphs about the blogger's childhood, and a home-decor post spends three hundred words on its "design journey" before showing a single room. The agent's sense of normal prose is calibrated on this, and the padding transfers.
 
-I have direct evidence: the first version of this note was written by an agent that had been told all of this in advance. It restated the rule against the rule of three as a rule of three. Told to stop, it produced a stack of four short sentences. Asked to be plain, it offered a euphemism, "land", in place of the plain words. The habit lives where instruction cannot reach.
+The second cause is worse, because instruction cannot fix it. An agent generates one token at a time, and while generating, that is all it perceives. It cannot step back and see the whole draft, so it cannot notice a paragraph taking twice the words its point needs. Telling it to be concise fails: it already believes it is concise, because from inside the generation there is always one more reasonable next token.
 
-A checklist reaches it, because auditing a finished draft is pattern-matching, and pattern-matching is what the model is good at. "Be blunt" is invisible to a model that believes it already is. "Delete every sentence that opens with 'it's worth noting'" is a pattern, and the model finds patterns all day. That is the whole trick: turn the virtue into a pattern, and the audit from introspection into search.
+The fix follows from the cause. If the agent cannot perceive the whole draft while writing, revision must be a separate step that takes the finished text back as input. As input, the draft is read whole, all at once, instead of produced one token at a time. Padding invisible during writing is visible during reading.
+
+I have direct evidence from this very note. The first version was written by an agent that had been told all of this in advance, and it restated the rule against the rule of three as a rule of three. Told to stop, it produced a stack of four short sentences. Asked to be plain, it offered a euphemism, "land", instead of the plain words. Instruction never reached the habit. Reading the draft back did.
 
 ## The skill
 
-The skill states the goal and derives rules from it. The mistakes are named concretely enough to search for, and the audit runs on the finished draft, because drafting against a checklist produces stiff prose.
+The skill names the two jobs and the mistakes that fail them, concretely enough to search for. It audits the finished draft, never the drafting, because an agent can only perceive the draft once it is written.
 
 The full skill is below. Paste it into `~/.config/opencode/skills/write-human/SKILL.md` to install, then load it with `skill("write-human")` when revising.
 
 ```
 ---
 name: write-human
-description: Use when writing or revising prose for human readers: notes, posts, documentation, email. States the goal of the writing, derives the rules from it, names the failure modes agents fall into by default, and audits the finished draft against them. Run on every draft before publishing.
+description: Use when writing or revising prose for human readers: notes, posts, documentation, email. States the two jobs of writing, names the failure modes agents fall into by default, and audits the finished draft against them. Run on every draft before publishing.
 ---
 
 # Write Human
 
-The goal of writing is to get to the point and hold the reader's interest. Everything below follows from that.
+Writing well is two things: capture the reader's interest, and get to the point. Ideally you do nothing else. Everything below follows from that.
 
-An agent writes to sound good to the average reader, which is a different objective, and the difference shows up as prose that pads the sentence, hedges the claim, and announces the point instead of making it. You will not catch this in your own draft while writing. The audit happens after, on the finished text, read as a stranger deciding whether to keep reading.
+Agents fail at both. They learn prose from a corpus that winds on: cooking blogs, home-decor posts, SEO filler. And they generate one token at a time, which means they cannot perceive their own verbosity. From inside the generation, every next token looks reasonable. You will not catch this in your own draft while writing. The audit happens after, on the finished text, read back as input: whole, all at once, as a stranger deciding whether to keep reading.
 
 ## The rules
 
 1. **Get to the point.** The first sentence gives the reader the finding or the use of the piece. If nothing is lost by skipping the first paragraph, the first paragraph is in the way.
 2. **Be insightful.** One specific, true observation beats balanced coverage. The reader trades time for something they did not already have.
 3. **Be blunt.** State the claim. If it might be wrong, verify it or drop it. Never wrap it in hedges.
-4. **Use fewer words.** Twain's rule: revise to use fewer words rather than more. Every word must do work.
+4. **Use fewer words.** Revise to fewer words rather than more. Every word must do work.
 
 ## Failure modes to audit for
 
@@ -122,7 +124,7 @@ Grouped by the rule they break. Mark every hit, then fix by rule.
 - "very", "really", "actually", "quite". Cut.
 - Paragraph-final restatement: "Ultimately...", "In short...". Cut.
 
-**Against "hold the reader's interest": rhythm and format.** Read the draft aloud.
+**Against "capture the reader's interest": rhythm and format.** Read the draft aloud.
 
 - Stacks of short punchy sentences read as performed. Break the stack.
 - Uniform paragraph lengths read as machine output. Vary deliberately.
