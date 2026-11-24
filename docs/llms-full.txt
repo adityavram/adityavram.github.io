@@ -1,4 +1,4 @@
-# In Progress
+# In Progress - There's no such thing as primes
 # date: 2026-11-24
 # url: https://adityavram.github.io/notes/0004-in-progress.md
 
