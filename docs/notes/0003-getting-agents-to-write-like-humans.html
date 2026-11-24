@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Getting agents to write like humans</title>
+<style>
+:root{--bg:#1b1b1d;--fg:#d6d6d6;--dim:#7a7a7d;--line:#2a2a2d;--link:#8ab4d8;--code:#242427}
+body{max-width:650px;margin:50px auto;padding:0 16px;
+  background:var(--bg);color:var(--fg);
+  font:0.95rem/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+h1{font-size:1.1rem;font-weight:600;margin:0 0 1.5rem}
+h2{font-size:1rem;font-weight:600;margin:1.8rem 0 .6rem;color:#fff}
+h3{font-size:0.95rem;font-weight:600;margin:1.2rem 0 .4rem;color:#fff}
+p,li{margin:.5rem 0}
+pre{background:var(--code);padding:.8rem;overflow-x:auto;font-size:0.85rem;border:1px solid var(--line)}
+code{background:var(--code);padding:.1rem .3rem;font-size:0.85em}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1.2rem 0;font-size:0.9rem}
+th,td{padding:.45rem .6rem;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:#fff;font-weight:600;border-bottom:1px solid var(--dim)}
+ul.notes{list-style:none;padding:0}
+ul.notes li{margin:.4rem 0}
+</style>
+<link rel="describedby" href="/llms.txt">
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom feed">
+<link rel="alternate" type="text/markdown" href="/notes/0003-getting-agents-to-write-like-humans.md">
+</head>
+<body>
+<h1>Getting agents to write like humans</h1>
+<p>I frequently found that my agents wrote like agents. Instructing them to write better changed nothing. Banning the words that mark machine prose made it worse: the agent stripped the banned words and kept the padding. What worked was a skill that tells the agent what the writing is for, and then checks its finished draft against a list of specific mistakes. This note is the reasoning, and the skill is at the end.</p>
+<h2>Why instruction fails</h2>
+<p>Writing has one job: get to the point and hold the reader&#x27;s interest. Being insightful earns the interest, and being blunt gets you to the point. Twain&#x27;s rule covers the rest: revise to use fewer words rather than more.</p>
+<p>An agent is trained to sound good to the average reader, which is a different objective, and the difference shows up as prose that pads the sentence, hedges the claim, and announces the point instead of making it. The agent cannot see this from the inside, for the same reason a person who believes they are funny cannot be told to be funnier. Instructing an agent to be blunt fails when the agent already believes it is.</p>
+<p>I have direct evidence, because the first version of this note was written by an agent that had been told all of this in advance. It restated the rule against the rule of three as a rule of three. Told to stop, it produced a stack of four short sentences. Asked to be plain, it offered a euphemism, &quot;land&quot;, in place of the plain words. The habit lives somewhere the instruction cannot reach.</p>
+<p>A checklist reaches it, because checking a finished draft is pattern-matching, and pattern-matching is the thing the model is good at. &quot;Be blunt&quot; is invisible to a model that believes it already is. &quot;Delete every sentence that opens with &#x27;it&#x27;s worth noting&#x27;&quot; is a pattern in text, and the model finds patterns in text all day. That is the whole trick: turn the virtue into a pattern, and the audit from introspection into search.</p>
+<h2>The skill</h2>
+<p>The skill states the goal and derives a few rules from it. It names the mistakes concretely enough to search for, and it requires the audit on a finished draft rather than during writing, because drafting against a checklist produces stiff prose.</p>
+<p>The full skill is below. Paste it into <code>~/.config/opencode/skills/write-human/SKILL.md</code> to install, then load it with <code>skill(&quot;write-human&quot;)</code> when revising a draft.</p>
+<pre><code>
+---
+name: write-human
+description: Use when writing or revising prose for human readers: notes, posts, documentation, email. States the goal of the writing, derives the rules from it, names the failure modes agents fall into by default, and audits the finished draft against them. Run on every draft before publishing.
+---
+
+# Write Human
+
+The goal of writing is to get to the point and hold the reader&#x27;s interest. Everything below follows from that.
+
+An agent writes to sound good to the average reader, which is a different objective, and the difference shows up as prose that pads the sentence, hedges the claim, and announces the point instead of making it. You will not catch this in your own draft while writing. The audit happens after, on the finished text, read as a stranger deciding whether to keep reading.
+
+## The rules
+
+1. **Get to the point.** The first sentence gives the reader the finding or the use of the piece. If nothing is lost by skipping the first paragraph, the first paragraph is in the way.
+2. **Be insightful.** One specific, true observation beats balanced coverage. The reader trades time for something they did not already have.
+3. **Be blunt.** State the claim. If it might be wrong, verify it or drop it. Never wrap it in hedges.
+4. **Use fewer words.** Twain&#x27;s rule: revise to use fewer words rather than more. Every word must do work.
+
+## Failure modes to audit for
+
+Grouped by the rule they break. Mark every hit, then fix by rule.
+
+**Against &quot;get to the point.&quot;**
+
+- The draft announces itself: &quot;This piece will examine...&quot;, &quot;In this article, we&#x27;ll explore...&quot; Start with the first claim.
+- A generic opening that could begin any piece on the subject. Open with the specific fact instead.
+- Sections end by restating themselves. End on the last real point.
+- Signposts: &quot;more on that below&quot;, &quot;as we&#x27;ll see&quot;. Delete.
+- A conclusion that restates the introduction. Cut the weaker one.
+
+**Against &quot;be insightful.&quot;**
+
+- Balanced coverage where one observation would do. Pick the observation.
+- Claims that sound profound and name nothing specific. Replace with the number, the example, or the name.
+- Adjective inflation: robust, seamless, comprehensive, powerful, holistic. These describe anything, so they describe nothing.
+- Vocabulary the model reaches for far more often than people do: delve, leverage, navigate, landscape, tapestry, showcase, testament. Use the plain word.
+
+**Against &quot;be blunt.&quot;**
+
+- Hedges: &quot;perhaps&quot;, &quot;arguably&quot;, &quot;it could be that&quot;. Make the claim or drop it.
+- Postponing signposts: &quot;it&#x27;s worth noting that&quot;, &quot;it&#x27;s important to remember&quot;. Delete. The sentence underneath already carries the point.
+- Passive voice that hides the actor: &quot;it was determined that&quot;. Name who did it.
+- Faux-conversational pivots: &quot;Here&#x27;s the thing:&quot;, &quot;Let me be clear:&quot;. Start with the point.
+- Rhetorical questions where a statement belongs.
+- &quot;Excited to announce&quot;, &quot;thrilled to share&quot;. State what happened.
+- Caveat sections. State the finding. Readers who want to replicate will check the sample size themselves.
+
+**Against &quot;use fewer words.&quot;**
+
+- Triples that exist for the rhythm. Keep three items when they are genuinely distinct; otherwise cut to the one that carries the point.
+- Paired adjectives: &quot;simple yet powerful&quot;, &quot;elegant and robust&quot;. Pick the one that matters.
+- The thesis restated in every section. Make the point once, in its strongest place.
+- &quot;very&quot;, &quot;really&quot;, &quot;actually&quot;, &quot;quite&quot;. Cut.
+- Paragraph-final restatement: &quot;Ultimately...&quot;, &quot;In short...&quot;. Cut.
+
+**Against &quot;hold the reader&#x27;s interest&quot;: rhythm and format.** Read the draft aloud.
+
+- Stacks of short punchy sentences read as performed. Break the stack.
+- Uniform paragraph lengths read as machine output. Vary deliberately.
+- Three or more sentences opening with the same word. Keep one, recast the rest.
+- Em dashes used as the default route to a punchline, several per paragraph. A period usually does the job.
+- Emoji in headings, decorative unicode, bold inside body copy, exclamation clusters. Cut.
+
+## Model defaults
+
+Families reach for different crutches. Audit your own family&#x27;s list hardest, because you reach for it without noticing.
+
+- **GPT:** sets of three, symmetrical structure (intro, evenly weighted sections, a conclusion that restates the intro), heading emoji, &quot;I hope this email finds you well&quot;.
+- **Claude:** hedging and meta-commentary (&quot;I should note&quot;, &quot;that said&quot;), clause-heavy sentences, warmth before substance, em dashes.
+- **Gemini:** bullets and bold where prose belongs, encyclopedic tone, cautious disclaimers.
+- **GLM:** less cataloged in English prose. Assume the GPT and Claude lists until better known.
+
+## What not to fix
+
+- A single em dash, a single &quot;delve&quot;, one list of three genuine items. The tell is density, not occurrence.
+- Correct grammar and polish. They are not tells.
+- A step list or spec that happens to be a list. That content is a list.
+- Non-native English. A person&#x27;s English is never a tell.
+
+## Protocol
+
+1. Draft without this skill open. Drafting against a checklist produces stiff prose.
+2. Put the draft down. Come back and read it as a stranger deciding whether to keep reading.
+3. Mark every failure mode above. Two or more in one paragraph means rewrite the paragraph.
+4. Check the first sentence first: finding or use, not preamble.
+5. Delete hedges, signposts, caveats, and restatements.
+6. Collapse padded triples to the item that carries the point.
+7. Read the rhythm aloud. Break uniform stacks in both directions.
+8. Cut ten percent of the words. If the piece survives, cut ten percent more.
+9. Before publishing, answer the reader&#x27;s questions: Did you get to the point? Did you give the reader a reason to care? Does the detail that follows stay relevant to an interested reader?
+</code></pre>
+</body>
+</html>
