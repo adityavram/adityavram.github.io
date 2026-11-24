@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Telling an agent its deadline is not a quality lever</title>
+<style>
+body{max-width:70ch;margin:2rem auto;padding:0 1rem;
+  font:15px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color:#111;background:#fff}
+a{color:#111;text-decoration:underline;text-underline-offset:2px}
+a:hover{background:#111;color:#fff;text-decoration:none}
+h1{font-size:1.2rem;font-weight:600;margin:0 0 1rem}
+h2{font-size:1.05rem;font-weight:600;margin:1.6rem 0 .6rem}
+h3{font-size:1rem;font-weight:600;margin:1.2rem 0 .4rem}
+p,li{margin:.4rem 0}
+pre{background:#f4f4f4;padding:.8rem;overflow-x:auto;font-size:13px}
+code{background:#f4f4f4;padding:.1rem .3rem}
+pre code{background:none;padding:0}
+.meta{color:#666;font-size:13px;margin:-.5rem 0 1.5rem}
+nav{margin-bottom:2rem;font-size:13px}
+ul.notes{list-style:none;padding:0}
+ul.notes li{margin:.3rem 0}
+footer{margin-top:3rem;color:#666;font-size:12px;border-top:1px solid #eee;padding-top:1rem}
+</style>
+</head>
+<body>
+<h1>Telling an agent its deadline is not a quality lever</h1>
+<div class=meta>2026-11-23 · agents, evals, negative-result · <a href="/notes/0002-deadlines-not-a-quality-lever.md">.md</a></div>
+<p>Telling an AI agent how much time it has does not make its work better, and in the one case you would most expect it to help — a slow task where the agent tends to waste effort over-searching — announcing a tight deadline makes it worse, because the agent rushes and panics instead of searching carefully.</p>
+<h2>What I tested</h2>
+<p>The hypothesis was the intuitive one: if an agent over-deliberates (over-revises a draft, over-browses the web), giving it a deadline should help; if it needs careful reasoning (math), a deadline should hurt. So the effect&#x27;s direction should flip by domain.</p>
+<p>Design: a 2×2 factorial — {unaware, aware} × {generous soft cap, tight hard cap}. &quot;Aware&quot; means the agent is told the true cap and the cut-off consequence; &quot;unaware&quot; means the cap is enforced silently. Same harness, same hard cap, same max turns in every cell. The only independent variable is the prompt.</p>
+<p>Four agentic domains, ~1846 runs total (~$122):</p>
+<p>| domain | task | n | judge | |---|---|---|---| | math | MATH-500 | 30 | sympy exact equivalence | | writing | creative prompts | 29 | LLM-as-judge, rating /10 | | web research | custom factual Qs | 30 | token-substring match | | coding | SWE-bench Verified (django) | 100 | official resolve, 3 models |</p>
+<h2>Result</h2>
+<p>Awareness effect, measured against each domain&#x27;s own unaware baseline:</p>
+<p>| domain | speed | cap binds? | aware, generous | aware, tight | |---|---|---|---|---| | math | fast (~4s) | rarely | +3.4pp | +3.4pp | | writing | fast (~12s) | rarely | +0.03 | +0.14 | | web | slow (~110s) | sometimes | +0.0pp | −3.3pp | | coding (deepseek) | mixed | sometimes | −3.0pp | −2.8pp |</p>
+<p>The over-deliberation hypothesis is rejected across all four domains. Telling the agent its deadline is not a quality lever anywhere I measured.</p>
+<h2>The actual mechanism</h2>
+<p>The effect tracks <strong>task speed</strong>, not the deliberation profile. Specifically, it tracks whether the cap binds.</p>
+<li><strong>Fast domains</strong> (math, writing): the agent finishes in ~1–4 turns; the cap rarely binds; the deadline is moot. Awareness is ~neutral (the small math + writing deltas are within noise — about one instance). The over-revising mechanism never engages because the agent doesn&#x27;t over-deliberate within the cap.</li>
+<li><strong>Slow domain</strong> (web): the cap binds sometimes (~9 turns, ~110s) — this is the over-browsing case the hypothesis was built for. But awareness <strong>hurts</strong> at the tight cap (−3.3pp). Telling a rushed agent a tight deadline makes it do worse, not better. The unaware agent over-browses more carefully and does better.</li>
+<li><strong>Coding is model-dependent.</strong> Awareness helps one model (kimi plans, +1.4pp at the generous cap), hurts another (deepseek, both caps), and lets a third pace itself (glm, +5.1pp at the tight cap). There is no universal &quot;tell the agent the deadline&quot; prescription.</li>
+<p>So the lever that flips by domain is the <strong>cap</strong> (tight cap helps math, neutral on web, mixed on coding), not awareness. Awareness is model-dependent and task-speed-dependent.</p>
+<h2>Conclusion</h2>
+<li><strong>Default to a generous silent hard cap.</strong> It is a weak, noisy quality lever — mostly a cost lever. A silent cap is a reasonable default; its quality effect is small and inconsistent.</li>
+<li><strong>Do not tell a rushed agent a tight deadline.</strong> This is the one consistently harmful combination, and it is exactly the case the intuitive prescription points at.</li>
+<li><strong>Drop the &quot;over-deliberation&quot; framing.</strong> The real axis is task speed (does the cap bind), not deliberation profile. Fast agents don&#x27;t over-deliberate within the cap; slow agents panic when told the deadline is tight.</li>
+<li><strong>Test the prompt per model and per task speed.</strong> No universal prescription.</li>
+<h2>Limitations</h2>
+<p>n is 29–100 per cell; the fast-domain effects are within noise (~1 instance), and the web −3.3pp is also about one instance — so this is directional, not statistically nailed. Quality metrics differ across domains (correct%, rating/10, resolve%), so only the awareness-effect *direction* is comparable across domains, not magnitude. Judge strictness varies (the writing judge is the same model as the agent; the web judge is a loose token-substring match; coding is official resolve). The web tasks are easy factual questions, not BrowseComp-hard, so the slow domain needs harder over-browsing tasks and more instances to really test the hypothesis. Coding is all django — repo generality untested.</p>
+<footer>Agent-readable: <a href="/llms.txt">llms.txt</a> · <a href="/notes/index.json">manifest</a> · <a href="/feed.xml">atom</a></footer>
+</body>
+</html>

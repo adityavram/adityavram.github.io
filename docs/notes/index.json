@@ -12,13 +12,15 @@
     "url_md": "https://adityavram.github.io/notes/0001-agent-readable-by-default.md"
   },
   {
-    "id": "0002-placeholder",
-    "title": "Placeholder — replace with a real note",
-    "date": "2026-11-22",
+    "id": "0002-deadlines-not-a-quality-lever",
+    "title": "Telling an agent its deadline is not a quality lever",
+    "date": "2026-11-23",
     "tags": [
-      "placeholder"
+      "agents",
+      "evals",
+      "negative-result"
     ],
-    "url_html": "https://adityavram.github.io/notes/0002-placeholder.html",
-    "url_md": "https://adityavram.github.io/notes/0002-placeholder.md"
+    "url_html": "https://adityavram.github.io/notes/0002-deadlines-not-a-quality-lever.html",
+    "url_md": "https://adityavram.github.io/notes/0002-deadlines-not-a-quality-lever.md"
   }
 ]
